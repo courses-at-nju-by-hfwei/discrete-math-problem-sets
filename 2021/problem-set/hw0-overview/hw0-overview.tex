@@ -1,0 +1,92 @@
+% hw0-overview.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{离散数学 (0-Overview)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年3月4日}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+\begin{problem}[防疫工作, 不能大意 \score{4}]
+  近期突发一种流感，症状及其严重，受感染的学生会无可遏制地进行编程与刷题等危险行为。
+  假设学生坐在$n \times n$排座位的教室里。
+  感染正在迅速扩散:
+  \begin{itemize}
+    \item 如果某学生已被感染，那么他/她就不可能痊愈了;
+    \item 如果某学生至少与2个已经感染的学生座位相邻 (前、后、左、右；不包括对角)，
+      那么该学生也会被感染。
+  \end{itemize}
+  请证明: 如果初始状态有$< n$个学生感染了流感，那么至少有一个学生永远不会被感染。
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[Nim Game \score{6 = 1 + 2 + 2 + 1}]
+  Nim 是一个双人游戏 (你可以在课堂上分享的 Ludii Player 里找到它)。
+  游戏开始时，两人面前放着几堆石头，
+  两个玩家轮流操作，每次选择从某个石堆里拿走一块或多块石头。
+  最后没有石头可拿的那个玩家输掉比赛。
+
+  \fig{width = 0.40\textwidth}{figs/nim-stone}
+
+  本题将引导大家寻找该游戏的必胜策略。
+
+  考虑对石头堆里的石头个数做(二进制表示下的; 不足时高位补０)异或操作($\oplus$)，
+  结果称为 Nim 和。
+
+  \begin{enumerate}[(1)]
+    \item 请证明: 若 Nim 和为０, 则任意一次移动都会导致 Nim 和不为 0。
+    \item 请证明: 若 Nim 和不为0，则必然存在一个石头堆，它的石头数大于其它所有石头堆的 Nim 和。
+      (统一在二进制或十进制下进行比较)
+    \item 请证明: 若游戏开始时, Nim 和不为 0，则先手有必胜策略。
+    \item 当 $n = 2$ 时，给出某玩家有必胜策略的充要条件与他/她的必胜策略。
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
