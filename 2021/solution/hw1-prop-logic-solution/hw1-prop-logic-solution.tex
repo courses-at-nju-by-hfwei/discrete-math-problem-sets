@@ -1,0 +1,130 @@
+% hw1-prop-logic.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{离散数学 (1-prop-logic)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年3月11日}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+\begin{problem}[命题逻辑公式上的数学归纳法 \score{2 ($\star\star$)}]
+  假设公式 $\alpha$ 中不含 ``$\lnot$'' 符号。
+  请证明, $\alpha$ 中超过四分之一的符号是命题符号。
+\end{problem}
+
+\begin{proof}
+  对公式的结构作归纳。
+
+  $\dots$
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[合取范式与析取范式 \score{3 ($\star$)}]
+  我们先引入一个定义。
+
+  \begin{definition}[合取范式 (Conjunctive Normal Form; CNF)]
+    \label{def:cnf}
+    我们称公式 $\alpha$ 是\red{\bf 合取范式}, 如果它形如
+    \[
+      \alpha = \beta_{1} \land \beta_{2} \land \dots \land \beta_{k},
+    \]
+    其中, 每个 $\beta_{i}$ 都形如
+    \[
+      \beta_{i} = \beta_{i1} \lor \beta_{i2} \lor \dots \lor \beta_{in},
+    \]
+    并且 $\beta_{ij}$ 或是一个命题符号, 或是命题符号的否定。
+  \end{definition}
+
+  例如, 下面的公式就是一个合取范式。
+  \[
+    (P \lor \lnot Q \lor R) \;\red{\land}\; (\lnot P \lor Q) \;\red{\land}\; \lnot Q
+  \]
+
+  将定义~\ref{def:cnf} 中的所有$\land$换成$\lor$, 所有$\lor$换成$\land$, 其余不变,
+  就变成了析取范式 (Disjunctive Normal Form; DNF)的定义。本题以CNF为例。
+
+  将任意公式转化成CNF或DNF的方法如下:
+  \begin{enumerate}[(1)]
+    \item 先将公式中的联词化归成 $\lnot$, $\land$ 与 $\lor$;
+    \item 再使用 De Morgan 律将 $\lnot$ 移到各个命题变元之前 (\blue{``否定深入''});
+    \item 最后使用结合律、分配律将公式化归成合取范式或析取范式。
+  \end{enumerate}
+
+  请将
+  \[
+    (P \land (Q \to R)) \to S
+  \]
+  化为合取范式。
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[重言蕴含与推理规则 \score{5 = 3 + 2 ($\star\star\star$)}]
+  \begin{enumerate}[(1)]
+    \item 请使用真值表方法证明
+      \[
+        \set{P \lor Q, P \to R, Q \to S} \models S \lor R.
+      \]
+    \item 请使用重言式所代表的推理规则(可以任意使用规则,
+      也可以使用你认为显然成立但课堂上没有列出来的规则, 但需要指明每一步使用了哪条规则)证明
+      \[
+        \set{P \lor Q, P \to R, Q \to S} \vdash S \lor R.
+      \]
+      提示: 你可能需要使用
+      \[
+        (\alpha \to \beta) \leftrightarrow (\lnot \alpha \lor \beta)
+      \]
+      \[
+        ((\alpha \to \beta) \land (\beta \to \gamma)) \to (\alpha \to \gamma)
+      \]
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
