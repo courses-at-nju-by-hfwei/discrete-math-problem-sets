@@ -1,0 +1,29 @@
+% truth-table.tex
+
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+
+% \usepackage{graphicx}
+\begin{table}[h]
+  \centering
+  \resizebox{0.50\textwidth}{!}{%
+  \begin{tabular}{|C|C|C|C||C|C|C||C|}
+    \hline
+    P & Q & R & S & P \lor Q & P \to R & Q \to S & S \lor R \\ \hline
+    T & T & T & T & \blue{T} & \blue{T} & \blue{T} & \red{T} \\ \hline
+    T & T & T & F & T & T & F & T \\ \hline
+    T & T & F & T & T & F & T & T \\ \hline
+    T & T & F & F & T & F & F & F \\ \hline
+    T & F & T & T & \blue{T} & \blue{T} & \blue{T} & \red{T} \\ \hline
+    T & F & T & F & \blue{T} & \blue{T} & \blue{T} & \red{T} \\ \hline
+    T & F & F & T & T & F & T & T \\ \hline
+    T & F & F & F & T & F & T & F \\ \hline
+    F & T & T & T & \blue{T} & \blue{T} & \blue{T} & \red{T} \\ \hline
+    F & T & T & F & T & T & F & T \\ \hline
+    F & T & F & T & \blue{T} & \blue{T} & \blue{T} & \red{T} \\ \hline
+    F & T & F & F & T & T & F & F \\ \hline
+    F & F & T & T & F & T & T & T \\ \hline
+    F & F & T & F & F & T & T & T \\ \hline
+    F & F & F & T & F & T & T & T \\ \hline
+    F & F & F & F & F & T & T & F \\ \hline
+  \end{tabular}}
+\end{table}

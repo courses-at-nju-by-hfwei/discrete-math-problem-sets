@@ -91,6 +91,9 @@
 \usepackage{amsmath, mathtools, amsfonts, amssymb}
 \newcommand{\set}[1]{\{#1\}}
 
+\usepackage{amstext} % for \text macro
+\usepackage{array}   % for \newcolumntype macro
+
 % define theorem-like environments
 \usepackage[amsmath, thmmarks]{ntheorem}
 
@@ -102,6 +105,8 @@
 \renewcommand{\theproblem}{\arabic{problem}}
 \newtheorem{definition}{定义}[subsection]
 \renewcommand{\thedefinition}{\arabic{definition}}
+\newtheorem{lemma}{引理}[subsection]
+\renewcommand{\thelemma}{\arabic{lemma}}
 \newtheorem{ot}{Open Topics}
 
 \theorempreskip{3.0\topsep}

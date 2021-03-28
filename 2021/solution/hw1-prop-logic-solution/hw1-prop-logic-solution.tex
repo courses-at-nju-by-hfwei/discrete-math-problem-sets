@@ -1,4 +1,4 @@
-% hw1-prop-logic.tex
+% hw1-prop-logic-solution.tex
 
 % !TEX program = xelatex
 %%%%%%%%%%%%%%%%%%%%
@@ -33,11 +33,46 @@
   请证明, $\alpha$ 中超过四分之一的符号是命题符号。
 \end{problem}
 
-\begin{proof}
-  对公式的结构作归纳。
+\begin{solution}
+  我们证明如下引理:
+  \begin{lemma*}
+    长度为 $4k + 1$ 的不含 $\lnot$ 符号的公式中含有 $k + 1$ 个命题符号。
+  \end{lemma*}
 
-  $\dots$
-\end{proof}
+  \begin{proof}
+    对公式 $\alpha$ 的结构作归纳~\footnote{对公式使用数学归纳法时, 通常都是这样的做法,
+    请注意以下的书写规范。其中, ``归纳假设''有时可以省略。}。
+
+    \begin{description}
+      \item[基础步骤:] $\alpha$ 是一个命题符号。
+        公式长度 $|\alpha| = 1 = 4 \times 0 + 1$, 命题符号个数为 $1 = 0 + 1$。 引理成立。
+      \item[归纳假设:] 长度为 $4k + 1$ 的不含 $\lnot$ 符号的公式中含有 $k + 1$ 个命题符号。
+      \item[归纳步骤:] 因为$\alpha$中不含$\lnot$联词,
+        所以 $\alpha$ 呈型 $\beta \oplus \gamma$,
+        其中 $\oplus$ 表示 $\land$, $\lor$, $\to$ 或 $\leftrightarrow$ 二元逻辑联词。
+        根据归纳假设, 对于子公式 $\beta$ 与 $\gamma$
+        ($\beta_{P}$表示$\beta$中命题符号的个数),
+        \[
+          |\beta| = 4k_{1} + 1, \qquad |\beta_{P}| = k_{1} + 1,
+        \]
+        \[
+          |\gamma| = 4k_{2} + 1, \qquad |\gamma_{P}| = k_{2} + 1.
+        \]
+        所以~\footnote{$+2$: 两个括号。 本解答将括号也计算在内。},
+        \begin{align*}
+          |\alpha| &= |\beta| + |\gamma| \\
+                   &= (4k_{1} + 1) + (4k_{2} + 1) + 2 \\
+                   &= 4(k_{1} + k_{2} + 1)
+        \end{align*}
+        \begin{align*}
+          |\alpha_{P}| &= |\beta_{P}| + |\gamma_{P}| \\
+                   &= (k_{1} + 1) + (k_{2} + 1) \\
+                   &= (k_{1} + k_{2} + 1) + 1
+        \end{align*}
+        得证。
+    \end{description}
+  \end{proof}
+\end{solution}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
@@ -80,6 +115,17 @@
 \end{problem}
 
 \begin{solution}
+  \marginnote{注意: 使用重言式进行公式变换, 要使用 `$\equiv$', 不能使用 `$=$'。}
+  \begin{align*}
+    (P \land (Q \to R)) \to S
+    &\equiv (P \land (\lnot Q \lor R)) \to S \\
+    &\equiv \lnot (P \land (\lnot Q \lor R)) \lor S \\
+    &\equiv (\lnot P) \lor (\lnot (\lnot Q \lor R)) \lor S \\
+    &\equiv (\lnot P) \lor (Q \land \lnot R) \lor S \\
+    &\equiv (\lnot P \lor S) \lor (Q \land \lnot R) \\
+    &\equiv (\lnot P \lor S \lor Q) \land (\lnot P \lor S \lor \lnot R)
+  \end{align*}
+  \marginnote{See \href{https://www.wolframalpha.com/input/?i=CNF+\%28P+\%26\%26+\%28Q+implies+R\%29\%29+implies+S}{CNF\&wolframalpha}}
 \end{solution}
 %%%%%%%%%%%%%%%
 
@@ -106,6 +152,75 @@
 \end{problem}
 
 \begin{solution}
+  \begin{enumerate}[(1)]
+    \item 见下表。 从表中可以看出, 使得 $P \lor Q$, $P \to R$, $Q \to S$
+      同时成立的真值指派 (蓝色) 都满足 $S \lor R$ (红色), 符合重言蕴含的定义
+      ~\footnote{需要给出完整的真值表, 并检查是否符合重言蕴含的定义}。
+      \input{tables/truth-table}
+      \marginnote{See also \href{https://www.wolframalpha.com/input/?i=truth+table+\%28\%28P+or+Q\%29+and+\%28P+implies+R\%29+and+\%28Q+implies+S\%29\%29+implies+\%28S+or+R\%29}{Truth Table@wolframalpha}}
+    \item
+      第一种解法中将使用如下重言式作为推理规则:
+      \begin{align}
+        (\alpha \to \beta) \leftrightarrow (\lnot \alpha \lor \beta)
+          \tag{a} \label{rule:a} \\
+        ((\alpha \to \beta) \land (\beta \to \gamma)) \to (\alpha \to \gamma)
+          \tag{b} \label{rule:b} \\
+        (\alpha \to \beta) \leftrightarrow (\lnot \beta \to \lnot \alpha)
+          \tag{c} \label{rule:c}
+      \end{align}
+      \marginnote{
+        \begin{itemize}
+          \item 问: 考试时是否需要使用这样的书写格式?
+          \item 答: 不一定。但是要尽量给公式编号, 并且写明每一步推理的所依赖的之前的公式的编号。
+            对于不那么显然的推理步骤, 最好还要附带理由, 比如使用了什么推理规则。
+        \end{itemize}
+      }
+      \begin{align}
+        P \lor Q  &\qquad (\text{前提}) \label{eq:1} \\
+        P \to R   &\qquad (\text{前提}) \label{eq:2} \\
+        Q \to S   &\qquad (\text{前提}) \label{eq:3} \\
+        \lnot P \to Q &\qquad (\ref{eq:1}, \ref{rule:a}) \label{eq:4} \\
+        \lnot P \to S &\qquad (\ref{eq:4}, \ref{eq:3}, \ref{rule:b}) \label{eq:5} \\
+        \lnot S \to P &\qquad (\ref{eq:5}, \ref{rule:c}) \label{eq:6} \\
+        \lnot S \to R &\qquad (\ref{eq:6}, \ref{eq:2}, \ref{rule:b}) \label{eq:7} \\
+        S \lor R  &\qquad (\ref{eq:7}, \ref{rule:a})
+      \end{align}
+      \marginnote{
+        \begin{itemize}
+          \item 问: 考试时是否只能使用纯符号进行推理?
+          \item 答: 不一定。可以夹杂文字描述。只要推理过程清晰即可。
+        \end{itemize}
+      }
+
+    第二种解法使用(后面介绍的) $\lor$-推理规则:
+      \setcounter{equation}{0}
+      \begin{align}
+        P \lor Q  &\qquad (\text{前提}) \label{eq:1} \\
+        P \to R   &\qquad (\text{前提}) \label{eq:2} \\
+        Q \to S   &\qquad (\text{前提}) \label{eq:3} \\
+        P \to (S \lor R) &\qquad (\ref{eq:2}) \label{eq:4} \\
+        Q \to (S \lor R) &\qquad (\ref{eq:3}) \label{eq:5} \\
+        S \lor R &\qquad (\ref{eq:1}, \ref{eq:4}, \ref{eq:5}, \lor\text{-elim; case analysis})
+      \end{align}
+    其中, (\ref{eq:4}) 的详细推理过程如下 ((\ref{eq:5}) 的推理过程类似):
+    \marginnote{
+      \begin{itemize}
+        \item 问: 考试的时候是否需要写出这些详细的推理过程?
+        \item 答: 不一定。只要每一步推理都是较为显然的, 就不需要写出它的细节。
+      \end{itemize}}
+      \begin{align}
+        P \to R &\qquad (\text{前提})
+          \tag{4-1} \label{eq:4-1} \\
+        [P]     &\qquad (\text{引入假设})
+          \tag{4-2} \label{eq:4-2} \\
+        R       &\qquad (\ref{eq:4-1}, \ref{eq:4-2}, \to\text{-elim})
+          \tag{4-3} \label{eq:4-3} \\
+        S \lor R &\qquad (\ref{eq:4-3}, \lor\text{-intro})
+          \tag{4-4} \label{eq:4-4} \\
+        P \to (S \lor R) &\qquad (\ref{eq:4-2}, \ref{eq:4-3}, \ref{eq:4-4}, \to\text{-intro})
+          \tag{4-5} \label{eq:4-5}
+      \end{align}
+  \end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%
 
