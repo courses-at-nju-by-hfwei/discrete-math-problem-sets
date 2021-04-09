@@ -39,6 +39,9 @@
 \end{problem}
 
 \begin{proof}
+\marginnote{
+  这题只有两星? 我感到我的智商遭到了碾压。
+}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -50,6 +53,19 @@
 \end{problem}
 
 \begin{proof}
+  对邮资面额 $n$ 作归纳。
+  \begin{description}
+    \item[{\bf 基础步骤:}] $n = 12$ 时, 可由三张4分邮票组成。
+    \item[{\bf 归纳假设:}] 假设邮资为任意 $n \le k$ 的邮票都可以由4分与5分邮票组成。
+    \item[{\bf 归纳步骤:}] 考虑 $n = k + 1$ 分的邮资。以下分两种情况讨论:
+      \begin{itemize}
+        \item 假设 $k$ 分邮资的某个组合中含有4分的邮票,
+          则将该组合中某张4分的邮票换成5分的邮票, 即可组成 $k+1$ 分邮资。
+        \item 假设 $k$ 分邮资的任何组合中仅包含5分的邮票。
+          因为 $n \ge 12$，所以组合中至少包含3张5分的邮票。
+          只需将这3张5分的邮票换成4张4分的邮票, 即可组成 $k+1$ 分邮资。
+      \end{itemize}
+  \end{description}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -64,6 +80,52 @@
 \end{problem}
 
 \begin{proof}
+  我们证明以下引理~\footnote{首先要明确什么叫``与括号的使用方式无关''?}:
+  \begin{lemma*}
+    对于任何包含$n \ge 3$个操作数的式子
+    \[
+      a_{1} \ast a_{2} \ast \dots \ast a_{n},
+    \]
+    不论以何种方式加括号, 它的值都等于~\footnote{这就是``与括号的使用方式无关''的含义。}
+    \[
+      (((a_{1} \ast a_{2}) \ast a_{3}) \dots \ast a_{n-1}) \ast a_{n}.
+    \]
+  \end{lemma*}
+
+  \vspace{1em}
+  \noindent 对操作数的个数 $n \ge 3$ 作强数学归纳。
+  \begin{description}
+    \item[{\bf 基础步骤:}] $n = 3$。由于 $\ast$ 满足结合律:
+      \[
+        (a_{1} \ast a_{2}) \ast a_{3} = a_{1} \ast (a_{2} \ast a_{3}),
+      \]
+      $a_{1} \ast a_{2} \ast a_{3}$ 的值与括号使用方式无关。
+    \item[{\bf 归纳假设:}] 假设对于任何包含 $n \le k$ 个操作数的式子, 引理都成立。
+    \item[{\bf 归纳步骤:}] 考虑包含 $n = k + 1$ 个操作数的式子
+      \[
+        A = a_{1} \ast a_{2} \ast \dots \ast a_{n+1}.
+      \]
+      考虑最后一次 $\ast$ 的位置, 它将式子分成两部分:
+      \[
+        A = (a_{1} \ast \dots \ast a_{i}) \ast (a_{i+1} \ast \dots \ast a_{n+1}).
+      \]
+      其中, $i \le n$。
+      根据归纳假设,
+      \[
+        A = (a_{1} \ast \dots \ast a_{i}) \ast
+          (\boxed{(((a_{i+1} \ast a_{i+2}) \ast \dots) \ast a_{n})} \ast a_{n+1}).
+      \]
+      将 $((a_{i+1} \ast a_{i+2}) \ast \dots)$ 看作一个整体, 则
+      根据 $\ast$ 的结合性,
+      \[
+        A = (a_{1} \ast \dots \ast a_{i} \ast
+          \boxed{(((a_{i+1} \ast a_{i+2}) \ast \dots) \ast a_{n})}) \ast a_{n+1}.
+      \]
+      再次根据归纳假设~\footnote{对 $(\dots) \ast a_{n+1}$ 的 $(\dots)$ 部分使用归纳假设},
+      \[
+        A = ((a_{1} \ast a_{2}) \ast \dots) \ast a_{n+1}.
+      \]
+  \end{description}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -80,6 +142,35 @@
 \end{problem}
 
 \begin{solution}
+  \begin{enumerate}[(1)]
+    \item 因为不允许以0开头, 且相邻位数字不同, 所以
+      \[
+        T_{n} = 9^{n}.
+      \]
+    \item 对位数 $n$ 作归纳。
+      \begin{description}
+        \item[{\bf 基础步骤:}] $n = 1$ 时, $E_{1} = 4$, $O_{1} = 5$。
+        \item[{\bf 归纳步骤:}] 考虑 $n \ge 2$ 的情况。
+          计算 $E_{n}$。
+          考虑两种情况: 如果第 $(n-1)$ 位为偶数, 则第 $n$ 位有4种情况;
+          如果第 $(n-1)$ 位为奇数, 则第 $n$ 位有5种情况。因此,
+          \[
+            E_{n} = 4 E_{n-1} + 5 O_{n-1}.
+          \]
+          由于 $E_{n-1} + O_{n-1} = T_{n-1} = 9^{n-1}$, 故有
+          \[
+            E_{n} = 4E_{n-1} + 5 (9^{n-1} - E_{n-1}).
+          \]
+          解方程得,~\footnote{展开, 看符号变化, 便知要分奇偶。}
+          \[
+            E_{n} = \frac{9^{n} + (-1)^{n}}{2}.
+          \]
+          因此,~\footnote{$|E_{n} - O_{n}| = 1$}
+          \[
+            O_{n} = \frac{9^{n} - (-1)^{n}}{2}.
+          \]
+      \end{description}
+  \end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%
 
