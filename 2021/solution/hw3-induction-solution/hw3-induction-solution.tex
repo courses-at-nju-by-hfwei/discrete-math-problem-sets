@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{3. 数学归纳法 (3-induction)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年03月25日 发布习题 \\ 2021年04月 发布答案}
+\date{2021年03月25日 发布习题 \\ 2021年04月09日发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -18,7 +18,9 @@
 \noplagiarism % PLEASE DON'T DELETE THIS LINE!
 %%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  \begin{center}
+    \blue{\Large 总而言之, 这次作业下手确实有点重了 $\dots$}
+  \end{center}
   % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
   %   \begin{itemize}
   %     \item
@@ -36,12 +38,44 @@
   都存在一个人(不属于这个小组)与这 $n$ 个人都相识 (假设 ``相识''是相互的)。
 
   \noindent 请证明, 存在一个人, 他/她认识其它所有 $2n$ 个人。
+  \mfig{width = 0.95\textwidth}{figs/hard-yuanhua}
 \end{problem}
 
 \begin{proof}
-\marginnote{
-  这题只有两星? 我感到我的智商遭到了碾压。
-}
+  先引入如下定义:
+  \begin{definition*}
+    如果某组中的人相互都认识, 则称该组是``好''的。
+  \end{definition*}
+  \marginnote{
+    \begin{itemize}
+      \item {\bf 问:} 为什么这道题才两星? 我感觉我的智商受到了碾压。
+      \item {\bf 答:} 这是一个技术性失误。在众多题目中, 我一眼就看上了它的简洁优雅,
+        简单推理后, 便给了它两星。待我回头再思考时, 我意识到我低估了它---
+        它比我想象中更优雅, 当然也更难了。
+    \end{itemize}
+    \begin{itemize}
+      \item {\bf 问:} 数学归纳法呢?
+      \item {\bf 答:} 这也是一个技术性失误。不过, 这已经不重要了。看看这个解答 $\dots$
+    \end{itemize}
+  }
+  \mfig{width = 0.95\textwidth}{figs/sorry}
+  \begin{lemma*}
+    存在大小为 $n + 1$ 的``好''小组。
+  \end{lemma*}
+  \begin{proof}
+    首先, 一定存在大小为$2$的``好''小组, 这保证了``好''小组的存在性。
+    任取一个\red{\bf 极大的}``好''小组, 记为 $G$。
+    如果$|G| \le n$, 则根据题意, 存在一个不在$G$中的人, 记为 $p$,
+    $p$ 认识$G$中的每一个人。
+    将$p$加入$G$, 则得到一个比 $G$ 更大的``好''小组。
+    这与 $G$ 的选取 (极大性) 相矛盾。
+    故, 得证。
+  \end{proof}
+
+  \vspace{1em}
+  根据引理, 存在大小为 $n+1$ 的``好''小组, 记为 $M$。
+  根据题意, 对于剩下的 $n$ 个人, 存在一个在 $M$ 中的人, 记为 $q$, $q$ 认识这 $n$ 个人。
+  因此, $q$ 认识其它所有 $2n$ 个人。
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -101,7 +135,7 @@
       \]
       $a_{1} \ast a_{2} \ast a_{3}$ 的值与括号使用方式无关。
     \item[{\bf 归纳假设:}] 假设对于任何包含 $n \le k$ 个操作数的式子, 引理都成立。
-    \item[{\bf 归纳步骤:}] 考虑包含 $n = k + 1$ 个操作数的式子
+    \item[{\bf 归纳步骤:}] 考虑包含 $n = k + 1$ 个操作数的式子~\footnote{em, 这题还是有些难度的 $\dots$}
       \[
         A = a_{1} \ast a_{2} \ast \dots \ast a_{n+1}.
       \]
