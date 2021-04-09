@@ -1,0 +1,113 @@
+% hw4-set-solution.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{4. 集合: 基本概念与运算 (4-set)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年04月01日 发布习题\\ 2021年04月 发布答案}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[相对补与绝对补 \score{5} $\star\star$]
+  请证明,
+  \[
+    A \cap (B \setminus C) = (A \cap B) \setminus C
+                            = (A \cap B) \setminus (A \cap C).
+  \]
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[对称差 \score{4} $\star\star$]
+  请证明,
+  \[
+    A \cap (B \oplus C) = (A \cap B) \oplus (A \cap C).
+  \]
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[广义并、广义交 \score{4} $\star\star$]
+  请证明,
+  \[
+    \mathcal{F} \cap \mathcal{G} \neq \emptyset \implies
+      \bigcap \mathcal{F} \cap \bigcap \mathcal{G} \subseteq \bigcap (\mathcal{F} \cap \mathcal{G}).
+  \]
+  并举例说明, $\subseteq$ 不能换成 $=$。
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[广义并、广义交、德摩根律 \score{3} $\star\star\star$]
+  请化简集合 $A$:
+  \[
+    A = \mathbb{R} \setminus \bigcap_{n \in \mathbb{Z}^{+}} (\mathbb{R} \setminus \set{-n, -n+1, \cdots, 0, \cdots, n-1, n})
+  \]
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[幂集 \score{4} $\star\star\star$]
+  请证明,~\footnote{不, 我有``幂集''恐惧症。}
+  \[
+    \ps{A} = \ps{B} \iff A = B.
+  \]
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
