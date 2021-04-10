@@ -34,11 +34,26 @@
   请证明,
   \[
     A \cap (B \setminus C) = (A \cap B) \setminus C
-                            = (A \cap B) \setminus (A \cap C).
+                           = (A \cap B) \setminus (A \cap C).
   \]
 \end{problem}
 
 \begin{proof}
+  \begin{align}
+    &A \cap (B \setminus C) \\
+    =\; & A \cap (B \cap \overline{C}) \\
+    =\; & (A \cap B) \cap \overline{C} \\
+    =\; & (A \cap B) \setminus C
+  \end{align}
+
+  \begin{align}
+    &(A \cap B) \setminus (A \cap C) \\
+    =\; & (A \cap B) \cap \overline{A \cap C} \\
+    =\; & (A \cap B) \cap (\overline{A} \cup \overline{C}) \\
+    =\; & (A \cap B \cap \overline{A}) \cup (A \cap B \cap \overline{C}) \\
+    =\; & \emptyset \cup ((A \cap B) \cap \overline{C}) \\
+    =\; & (A \cap B) \setminus C
+  \end{align}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -51,6 +66,22 @@
 \end{problem}
 
 \begin{proof}
+  \setcounter{equation}{0}
+  \begin{align}
+    &(A \cap B) \oplus (A \cap C) \\
+    =&\; ((A \cap B) \cup (A \cap C)) \cap (\overline{A} \cup \overline{B} \cup \overline{C})
+      \label{eq:2-2} \\
+    =&\; (A \cap (B \cup C)) \cap (\overline{A} \cup \overline{B} \cup \overline{C}) \\
+    =&\; (A \cap (B \cup C) \cap \overline{A}) \cup (A \cap (B \cup C) \cap (\overline{B} \cup \overline{C})) \\
+    =&\; \emptyset \cup (A \cap ((B \cup C) \cap (\overline{B} \cup \overline{C}))) \\
+    =&\; A \cap (B \oplus C)
+      \label{eq:2-6}
+  \end{align}
+  其中, (\ref{eq:2-2}) 与 (\ref{eq:2-6}) 使用了等式:
+  \[
+    X \oplus Y = (X \cup Y) \setminus (X \cap Y)
+               = (X \cup Y) \cap (\overline{X} \cup \overline{Y}).
+  \]
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -65,18 +96,40 @@
 \end{problem}
 
 \begin{proof}
+  对任意 $x$,
+  \begin{align}
+    &x \in \bigcap \F \cap \bigcap \G \\
+    \implies& x \in \bigcap \F \land x \in \bigcap \G \\
+    \implies& (\forall F \in \F.\; x \in F) \land (\forall G \in \G.\; x \in G) \\
+    \implies& \red{\dots} \\
+    \implies& \forall X \in \F \cap \G.\; x \in X \\
+    \implies& x \in \bigcap (\F \cap \G).
+  \end{align}
 \end{proof}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[广义并、广义交、德摩根律 \score{3} $\star\star\star$]
+\begin{problem}[德摩根律 \score{3} $\star\star\star$]
   请化简集合 $A$:
   \[
-    A = \mathbb{R} \setminus \bigcap_{n \in \mathbb{Z}^{+}} (\mathbb{R} \setminus \set{-n, -n+1, \cdots, 0, \cdots, n-1, n})
+    A = R \setminus \bigcap_{n \in Z^{+}}
+      (R \setminus \set{-n, -n+1, \cdots, 0, \cdots, n-1, n})
   \]
 \end{problem}
 
 \begin{solution}
+  记
+  \[
+    X_n \triangleq \set{-n, -n+1, \cdots, 0, \cdots, n-1, n}.
+  \]
+
+  \setcounter{equation}{0}
+  \begin{align}
+    A &= \R \setminus \bigcap_{n \in Z^{+}} (R \setminus X_n) \\
+    &= \R \setminus \Big(R \setminus \bigcup_{n \in Z^{+}} X_n \Big) \\
+    &= \R \setminus \Big(R \setminus Z \Big) \\
+    &= \Z
+  \end{align}
 \end{solution}
 %%%%%%%%%%%%%%%
 
@@ -89,6 +142,33 @@
 \end{problem}
 
 \begin{solution}
+  先证
+  \[
+    \ps{A} = \ps{B} \implies A = B.
+  \]
+  假设 $\ps{A} = \ps{B}$。
+  \begin{align*}
+    &A \in \ps{A} \\
+    \implies &A \in \ps{B} \\
+    \implies &A \subseteq B
+  \end{align*}
+  同理可证 $B \subseteq A$。
+  因此, $A = B$。
+
+  \noindent 再证
+  \[
+    A = B \implies \ps{A} = \ps{B}.
+  \]
+  假设 $A = B$。对于任意 $x$,
+  \begin{align*}
+    &x \in \ps{A} \\
+    \implies &x \subseteq A \\
+    \implies &x \subseteq B \\
+    \implies &x \in \ps{B}
+  \end{align*}
+  因此, $\ps{A} \subseteq \ps{B}$。
+  同理可证 $\ps{B} \subseteq \ps{A}$。
+  因此, $\ps{A} = \ps{B}$。
 \end{solution}
 %%%%%%%%%%%%%%%
 
