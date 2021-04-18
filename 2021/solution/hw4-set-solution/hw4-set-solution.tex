@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{4. 集合: 基本概念与运算 (4-set)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年04月01日 发布习题\\ 2021年04月 发布答案}
+\date{2021年04月01日 发布习题\\ 2021年04月18日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -45,7 +45,8 @@
     =\; & (A \cap B) \cap \overline{C} \\
     =\; & (A \cap B) \setminus C
   \end{align}
-
+  \marginnote{尽量不要使用``对任意 $x$, $\dots$''这样``元素级别''的证明。
+    直接对集合进行``高层次''操作, 往往更为简洁。}
   \begin{align}
     &(A \cap B) \setminus (A \cap C) \\
     =\; & (A \cap B) \cap \overline{A \cap C} \\
@@ -89,22 +90,48 @@
 \begin{problem}[广义并、广义交 \score{4} $\star\star$]
   请证明,
   \[
-    \mathcal{F} \cap \mathcal{G} \neq \emptyset \implies
-      \bigcap \mathcal{F} \cap \bigcap \mathcal{G} \subseteq \bigcap (\mathcal{F} \cap \mathcal{G}).
+    \F \cap \G \neq \emptyset \implies
+      \bigcap \F \cap \bigcap \G \subseteq \bigcap (\F \cap \G).
   \]
   并举例说明, $\subseteq$ 不能换成 $=$。
 \end{problem}
 
 \begin{proof}
   对任意 $x$,
+  \setcounter{equation}{0}
   \begin{align}
-    &x \in \bigcap \F \cap \bigcap \G \\
-    \implies& x \in \bigcap \F \land x \in \bigcap \G \\
-    \implies& (\forall F \in \F.\; x \in F) \land (\forall G \in \G.\; x \in G) \\
-    \implies& \red{\dots} \\
-    \implies& \forall X \in \F \cap \G.\; x \in X \\
-    \implies& x \in \bigcap (\F \cap \G).
+    &x \in \bigcap \F \cap \bigcap \G \\[6pt]
+    \iff & x \in \bigcap \F \land x \in \bigcap \G \\[6pt]
+    \iff & (\forall F \in \F.\; x \in F) \land (\forall G \in \G.\; x \in G) \\[6pt]
+    \iff & \forall F \in \F.\; \forall G \in \G.\; x \in F \land x \in G \\[6pt]
+    \iff & \forall F \in \F.\; \forall G \in \G.\; x \in F \cap G \\[6pt]
+    \red{\implies}& \forall X \in \F \cap \G.\; x \in X \\[6pt]
+    \iff & x \in \bigcap (\F \cap \G).
   \end{align}
+  下面给出第 (6) 步的证明过程~\footnote{对此, 不作要求;
+    只要求能从直觉上``感受''到 $(5) \implies (6)$ (或 $(3) \implies (6)$) 的正确性。}:
+  \begin{align}
+    \forall F \in \F.\; \forall G \in \G.\; x \in F \cap G & \qquad \text{(前提)} \tag{5} \\[6pt]
+    [X] & \qquad (\text{引入变量}) \tag{5.1} \\[6pt]
+    [X \in \F \cap \G] & \qquad (\text{引入假设}) \tag{5.2} \\[6pt]
+    X \in \F \land X \in \G & \qquad ((5.2)) \tag{5.3} \\[6pt]
+    x \in X \cap X & \qquad (\forall\text{-elim}, (5.3), (5)) \tag{5.4} \\[6pt]
+    x \in X & \qquad ((5.4)) \tag{5.5} \\[6pt]
+    X \in \F \cap \G \to x \in X &\qquad (\to\text{-intro}, (5.2)-(5.5)) \tag{5.6} \\[6pt]
+    \forall X \in \F \cap \G.\; x \in X & \qquad (\forall\text{-intro}, (5.1)-(5.6)) \tag{6}
+  \end{align}
+
+  例子: 取
+  \[
+    \F = \set{\set{1, 2}, \set{2, 3}} \qquad \G = \set{\set{2, 3}, \set{2, 3, 4}}.
+  \]
+  则有,
+  \[
+    \bigcap \F \cap \bigcap \G = \set{2} \cap \set{2, 3} = \set{2},
+  \]
+  \[
+    \bigcap (\F \cap \G) = \bigcap \set{\set{2, 3}} = \set{2, 3}.
+  \]
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -112,8 +139,8 @@
 \begin{problem}[德摩根律 \score{3} $\star\star\star$]
   请化简集合 $A$:
   \[
-    A = R \setminus \bigcap_{n \in Z^{+}}
-      (R \setminus \set{-n, -n+1, \cdots, 0, \cdots, n-1, n})
+    A = \R \setminus \bigcap_{n \in \Z^{+}}
+      (\R \setminus \set{-n, -n+1, \cdots, 0, \cdots, n-1, n})
   \]
 \end{problem}
 
@@ -125,9 +152,9 @@
 
   \setcounter{equation}{0}
   \begin{align}
-    A &= \R \setminus \bigcap_{n \in Z^{+}} (R \setminus X_n) \\
-    &= \R \setminus \Big(R \setminus \bigcup_{n \in Z^{+}} X_n \Big) \\
-    &= \R \setminus \Big(R \setminus Z \Big) \\
+    A &= \R \setminus \bigcap_{n \in \Z^{+}} (\R \setminus X_n) \\
+    &= \R \setminus \Big(\R \setminus \bigcup_{n \in \Z^{+}} X_n \Big) \\
+    &= \R \setminus \Big(\R \setminus \Z \Big) \\
     &= \Z
   \end{align}
 \end{solution}
