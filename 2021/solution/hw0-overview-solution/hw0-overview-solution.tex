@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{离散数学 (0-Overview)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年3月4日}
+\date{2021年03月04日 发布习题 \\ 2021年04月18日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -18,6 +18,10 @@
 \noplagiarism % PLEASE DON'T DELETE THIS LINE!
 %%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+  \begin{itemize}
+    \item 若有疑问, 可在 \url{https://github.com/courses-at-nju-by-hfwei/discrete-math-problem-sets/discussions/new}
+      中讨论。
+  \end{itemize}
   % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
   % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
   %   \begin{itemize}
@@ -40,8 +44,24 @@
   请证明: 如果初始状态有$< n$个学生感染了流感，那么至少有一个学生永远不会被感染。
 \end{problem}
 
-\begin{solution}
-\end{solution}
+\begin{proof}
+  将相邻受感染的区域看作一个整体, 考虑受感染区域的边界长度
+  \footnote{\url{https://math.stackexchange.com/a/1829606}}。
+
+  假设初始状态有 $< n$ 个学生感染, 则受感染区域的边界长度 $\le 4(n-1)$。
+  如果所有学生都被感染, 则受感染区域的边界长度为 $4n$。
+  下面我们证明, 在不断感染的过程中, 受感染区域的边界长度不会增加。
+  因为 $4 (n-1) < 4n$, 所以至少有一个学生不会被感染。
+
+  \begin{lemma*}
+    在不断感染的过程中, 受感染区域的边界长度不会增加。
+  \end{lemma*}
+
+  \mfig{width = 0.80\textwidth}{figs/infection}
+  根据被感染的条件, 右图中的$b$周围至少有两个感染源 (用 $\times$ 表示)。
+  因此, $b$ 被感染共有三种情况。
+  对这三种情况分别分析, 即知引理成立。
+\end{proof}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
@@ -55,11 +75,11 @@
 
   本题将引导大家寻找该游戏的必胜策略。
 
-  考虑对石头堆里的石头个数(二进制表示下的; 不足时高位补０)做异或操作($\oplus$)，
+  考虑对石头堆里的石头个数(二进制表示下的; 不足时高位补0)做异或操作($\oplus$)，
   结果称为 Nim 和。
 
   \begin{enumerate}[(1)]
-    \item 请证明: 若 Nim 和为０, 则任意一次移动都会导致 Nim 和不为 0。
+    \item 请证明: 若 Nim 和为0, 则任意一次移动都会导致 Nim 和不为 0。
     \item 请证明: 若 Nim 和不为0，则必然存在一个石头堆，它的石头数大于其它所有石头堆的 Nim 和。
       (统一在二进制或十进制下进行大小比较)
     \item 请证明: 若游戏开始时, Nim 和不为 0，则先手有必胜策略。
@@ -67,8 +87,30 @@
   \end{enumerate}
 \end{problem}
 
-\begin{solution}
-\end{solution}
+\begin{proof}
+  \begin{enumerate}[(1)]
+    \item 假设移动了第$i$堆石头, 则第 $i$ 堆石头数 $n_{i}$ 的二进制表示至少有一位发生了变化。
+      所以, Nim 和不再为0。
+    \item 假设 Nim 和不为0, 则 Nim 和中至少有一位为 1。
+      设 Nim 和共$n$位, 且最高位的1在第 $i$ 位 (从左向右计数), 则 Nim 和可表示为
+      \[
+        \underbrace{0 \dots 0}_{n-i} 1 \underbrace{\dots}_{i-1}
+      \]
+      由于 Nim 和的第 $i$ 位为 1, 则至少存在一堆石头 (任取一个这样的石头堆, 记为 $S$),
+      它的石头数的二进制表示的第 $i$ 位为 1。
+      下面说明$S$的石头数 (记其二进制表示为 $n_{S}$)
+      大于其它所有石头堆的 Nim 和 (记为 $n_{\overline{S}}$), 理由如下:
+      \begin{itemize}
+        \item 由于 Nim 和的前 $n-i$ 位为0,
+          所以 $n_{S}$ 的前 $n-i$ 位与 $n_{\overline{S}}$ 的前 $n-i$ 位相同;
+        \item 由于 Nim 和的第 $i$ 位为 1,
+          $n_{S}$ 的第 $i$ 位为 $1$, 而 $n_{\overline{S}}$ 的第 $i$ 位为 0。
+      \end{itemize}
+    \item 先手的必胜策略是: 每次都选择满足 (2) 中条件的石头堆, 移动若干石头, 使得 Nim 和为0。
+    \item 如果初始时两堆石头的数目不同, 则先手有必胜策略: 每次均移动数目较多的那堆石头, 使得两堆石头数目相等。
+      相应地, 如果初始时两堆石头的数目相等, 则后手有必胜策略。
+  \end{enumerate}
+\end{proof}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
