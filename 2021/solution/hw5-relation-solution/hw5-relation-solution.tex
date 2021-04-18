@@ -1,0 +1,115 @@
+% hw5-relation-solution.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{5. 集合: 关系 (5-relation)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年4月08日}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[笛卡尔积 \score{3} $\star\star$]
+  设 $C \neq \emptyset$, 请证明
+  \[
+    A \subseteq B \iff A \times C \subseteq B \times C.
+  \]
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[关系的运算 \score{4} $\star\star$]
+  请证明,
+  \[
+    R[X_1 \setminus X_2] \supseteq R[X_1] \setminus R[X_2].
+  \]
+  请举例说明 $\supseteq$ 不能替换成 $=$。
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[关系的运算 \score{4} $\star\star$]
+  请证明,
+  \[
+    (X \cap Y) \circ Z \subseteq (X \circ Z) \cap (Y \circ Z).
+  \]
+  请举例说明, $\subseteq$ 不能换成 $=$。
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[关系的性质 \score{4} $\star\star$]
+  请证明,
+  \[
+    R \text{ 是对称且传递的 } \iff R = R^{-1} \circ R
+  \]
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[等价关系 \score{5} $\star\star\star$]
+  一个自反且传递的二元关系 $R \subseteq X \times X$
+  称为 $X$ 上的拟序。
+  现令 $\preceq\; \subseteq X \times X$ 为拟序。
+  如下定义 $X$ 上的关系 $\sim$:
+  \[
+    x \sim y \iff x \preceq y \land y \preceq x,
+  \]
+  请证明, $\sim$ 是 $X$ 上的等价关系。
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
