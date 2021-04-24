@@ -38,6 +38,35 @@
 \end{problem}
 
 \begin{proof}
+  先证
+  \[
+    A \subseteq B \implies A \times C \subseteq B \times C.
+  \]
+  假设 $A \subseteq B$。
+  对任意有序对 $(a, c)$,
+  \begin{align}
+    & (a, c) \in A \times C \\[6pt]
+    \iff & a \in A \land c \in C \\[6pt]
+    \implies & a \in B \land c \in C \qquad (\because A \subseteq B)\\[6pt]
+    \iff & (a, c) \in B \times C
+  \end{align}
+
+  再证
+  \[
+    A \times C \subseteq B \times C \implies A \subseteq B.
+  \]
+  因为 $C \neq \emptyset$, 不妨设 $c \in C$。
+  假设 $A \times C \subseteq B \times C$。
+  任取 $a \in A$,
+  \setcounter{equation}{0}
+  \begin{align}
+    & a \in A \\[6pt]
+    \implies &(a, c) \in A \times C \\[6pt]
+    \implies &(a, c) \in B \times C
+      \qquad (\because A \times C \subseteq B \times C) \\[6pt]
+    \implies & a \in B \land c \in C \\[6pt]
+    \implies &a \in B
+  \end{align}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -51,6 +80,24 @@
 \end{problem}
 
 \begin{proof}
+  任取 $y$,
+  \setcounter{equation}{0}
+  \begin{align}
+    & y \in R[X_{1}] \setminus R[X_{2}] \\[6pt]
+    \iff & y \in R[X_{1}] \land y \notin R[X_{2}] \\[6pt]
+    \iff & (\exists x_{1} \in X_{1}.\; (x_{1}, y) \in R)
+      \land (\forall x_{2} \in X_{2}.\; (x_{2}, y) \notin R)
+      \label{eq:2-3} \\[6pt]
+    \implies & \exists x \in X_{1} \setminus X_{2}.\; (x, y) \in R. \\[6pt]
+      \label{eq:2-4}
+    \iff & y \in R[X_{1} \setminus X_{2}]
+  \end{align}
+  其中, 在第 (\ref{eq:2-4}) 步可取使得 (\ref{eq:2-3})
+  中第一个合取子句成立的某个 $x \in X_{1}$。
+  根据 (\ref{eq:2-4}) 中第二个合取子句, $x \notin X_{2}$。
+  因此, $x \in X_{1} \setminus X_{2}$。
+
+  \red{TODO: example}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -64,6 +111,19 @@
 \end{problem}
 
 \begin{proof}
+  任取 $(a, c)$,
+  \setcounter{equation}{0}
+  \begin{align}
+    & (a, c) \in (X \cap Y) \circ Z \\[6pt]
+    \iff & \exists b.\; (a, b) \in Z \land (b, c) \in X \cap Y \\[6pt]
+    \iff & \exists b.\; (a, b) \in Z \land (b, c) \in X \land (b, c) \in Y \\[6pt]
+    \implies & (\exists b.\; (a, b) \in Z \land (b, c) \in X)
+      \land (\exists b.\; (a, b) \in Z \land (b, c) \in Y) \\[6pt]
+    \iff & (a, c) \in X \circ Z \land (a, c) \in Y \circ Z \\[6pt]
+    \iff & (a, c) \in (X \circ Z) \cap (Y \circ Z)
+  \end{align}
+
+  \red{TODO: example}
 \end{proof}
 %%%%%%%%%%%%%%%
 
