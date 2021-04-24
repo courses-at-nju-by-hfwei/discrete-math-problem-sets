@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{5. 集合: 关系 (5-relation)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年4月08日}
+\date{2021年04月08日 发布作业 \\ 2021年04月2x日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -18,6 +18,8 @@
 \noplagiarism % PLEASE DON'T DELETE THIS LINE!
 %%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+  若有疑问, 可到 \url{https://github.com/courses-at-nju-by-hfwei/discrete-math-problem-sets/discussions}
+  讨论。
   % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
   % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
   %   \begin{itemize}
@@ -136,6 +138,79 @@
 \end{problem}
 
 \begin{proof}
+  先证
+  \[
+    R \text{ 是对称且传递的 } \implies R = R^{-1} \circ R.
+  \]
+  假设 $R$ 是对称且传递的。
+  因为 $R$ 是对称的, 所以
+  \[
+    R = R^{-1}.
+  \]
+  因为 $R$ 是传递的, 所以
+  \[
+    R \circ R \subseteq R.
+  \]
+  故,
+  \[
+    R^{-1} \circ R = R \circ R \subseteq R.
+  \]
+  其次, 任取 $(a, b) \in R$~\footnote{\red{这一步如何用``关系代数''进行运算?
+  你如果有更简洁的方法, 请告诉我。}\vspace{1em}}。
+  因为 $R$ 是对称的, 所以 $(b, a) \in R$。
+  又因为 $R$ 是传递的, 所以 $(b, b) \in R$ 且 $(b, b) \in R^{-1}$。
+  因此, $(a, b) \in R^{-1} \circ R$。故, $R \subseteq R^{-1} \circ R$。
+
+  \marginnote{对于其它步骤, 你当然也可以``对任意 $\dots$'', 然后一顿操作猛如虎。
+    但是, 在更高的``关系代数''层面上进行运算, 往往举重若轻、事半功倍。
+  }
+  再证
+  \[
+     R = R^{-1} \circ R \implies R \text{ 是对称且传递的 }.
+  \]
+  假设 $R = R^{-1} \circ R$。
+  首先~\footnote{切记: $(R \circ S)^{-1} = S^{-1} \circ R^{-1}$},
+  \[
+    R^{-1} = (R^{-1} \circ R)^{-1} = R^{-1} \circ R = R.
+  \]
+  所以, $R$ 是对称的。其次~\footnote{这里用到了刚刚证明的 $R^{-1} = R$。},
+  \[
+    R = R^{-1} \circ R = R \circ R,
+  \]
+  所以, $R$ 是传递的。
+
+  % \setcounter{equation}{0}
+  % \begin{align}
+  %   & (a, c) \in R^{-1} \circ R \\[6pt]
+  %   \iff & \exists b.\; ((a, b) \in R \land (b, c) \in R^{-1}) \\[6pt]
+  %   \iff & \exists b.\; ((a, b) \in R \land (c, b) \in R) \\[6pt]
+  %   \implies & \exists b.\; ((b, a) \in R \land (c, b) \in R) \\[6pt]
+  %   \implies & (c, a) \in R \\[6pt]
+  %   \implies & (a, c) \in R
+  % \end{align}
+  % 因此, $R^{-1} \circ R \subseteq R$。
+
+  % 首先, 对于任意 $(a, b)$,
+  % \setcounter{equation}{0}
+  % \begin{align}
+  %   & (a, b) \in R \\[6pt]
+  %   \implies & (a, b) \in R^{-1} \circ R \\[6pt]
+  %   \implies & (b, a) \in (R^{-1} \circ R)^{-1} \\[6pt]
+  %   \implies & (b, a) \in R^{-1} \circ R \\[6pt]
+  %   \implies & (b, a) \in R
+  % \end{align}
+  % 故, $R$ 是对称的。
+
+  % 其次, 对于任意 $(a, b)$ 与 $(b, c)$,
+  % \setcounter{equation}{0}
+  % \begin{align}
+  %   & (a, b) \in R \land (b, c) \in R \\[6pt]
+  %   \implies & (b, a) \in R \land (c, b) \in R^{-1} \\[6pt]
+  %   \implies & (c, a) \in R^{-1} \circ R \\[6pt]
+  %   \implies & (c, a) \in R \\[6pt]
+  %   \implies & (a, c) \in R
+  % \end{align}
+  % 故, $R$ 是传递的。
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -151,8 +226,31 @@
   请证明, $\sim$ 是 $X$ 上的等价关系。
 \end{problem}
 
-\begin{solution}
-\end{solution}
+\begin{proof}
+  \begin{enumerate}[(1)]
+    \item $\sim$ 是自反的。\\
+      对于任意 $x \in X$, 因为 $\preceq$ 是自反的, 所以
+      \[
+        x \in X \implies x \preceq x \implies x \preceq x \land x \preceq x
+        \implies x \sim x.
+      \]
+    \item $\sim$ 是对称的。\\
+      对于任意 $(x, y) \in \;\sim$,
+      \[
+        x \sim y \implies x \preceq y \land y \preceq x
+        \implies y \preceq x \land x \preceq y \implies y \sim x.
+      \]
+    \item $\sim$ 是传递的。\\
+      对于任意 $(x, y) \in \;\sim$ 与 $(y, z) \in \;\sim$,
+      \begin{align*}
+        & x \sim y \land y \sim z \\[6pt]
+        \implies & (x \preceq y \land y \preceq x) \land (y \preceq z \land z \preceq y) \\[6pt]
+        \implies & (x \preceq y \land y \preceq z) \land (z \preceq y \land y \preceq x) \\[6pt]
+        \implies & x \preceq z \land z \preceq x \qquad (\because \;\preceq \text{is transitive})\\[6pt]
+        \implies & x \sim z
+      \end{align*}
+  \end{enumerate}
+\end{proof}
 %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 % 如果没有需要订正的题目，可以把这部分删掉
