@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{5. 集合: 关系 (5-relation)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年04月08日 发布作业 \\ 2021年04月2x日 发布答案}
+\date{2021年04月08日 发布作业 \\ 2021年04月25日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -99,7 +99,19 @@
   根据 (\ref{eq:2-4}) 中第二个合取子句, $x \notin X_{2}$。
   因此, $x \in X_{1} \setminus X_{2}$。
 
-  \red{TODO: example}
+  举例:
+  \[
+    R = \set{(x_{1}, y), (x_{2}, y)}
+    \qquad X_{1} = \set{x_{1}}
+    \qquad X_{2} = \set{x_{2}}
+  \]
+  \[
+    R[X_{1} \setminus X_{2}] = R[\set{x_{1}}] = \set{y}
+    \qquad R[X_{1}] \setminus R[X_{2}] = \set{y} \setminus \set{y} = \emptyset
+  \]
+  \[
+    R[X_1 \setminus X_2] \supset R[X_1] \setminus R[X_2]
+  \]
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -125,7 +137,19 @@
     \iff & (a, c) \in (X \circ Z) \cap (Y \circ Z)
   \end{align}
 
-  \red{TODO: example}
+  举例:
+  \[
+    X = \set{(b_{1}, c)}
+    \qquad Y = \set{(b_{2}, c)}
+    \qquad Z = \set{(a, b_{1}), (a, b_{2})}
+  \]
+  \[
+    (X \cap Y) \circ Z = \emptyset \circ Z = \emptyset
+    \qquad (X \circ Z) \cap (Y \circ Z) = \set{(a, c)} \cap \set{(a, c)} = \set{(a, c)}
+  \]
+  \[
+    (X \cap Y) \circ Z \subset (X \circ Z) \cap (Y \circ Z).
+  \]
 \end{proof}
 %%%%%%%%%%%%%%%
 
