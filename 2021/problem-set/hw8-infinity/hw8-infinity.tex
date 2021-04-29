@@ -30,8 +30,9 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{5} $\star\star\star$]
-  请证明鸽笼原理。
+\begin{problem}[\score{3} $\star\star\star$]
+  考虑由所有$0$, $1$串构成的集合 ($\set{0, 1, 111, 01010101010, 101010101, \dots}$)。
+  请问, 该集合是否是可数集合, 请给出理由。
 \end{problem}
 
 \begin{proof}
@@ -39,9 +40,12 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{5} $\star\star\star$]
-  Is the set of all infinite sequences of $0$'s and $1$'s finite,
-  countably infinite, or uncountable?
+\begin{problem}[\score{4} $\star\star\star$]
+  考虑如下命题:
+
+  ``存在可数无穷多个两两不相交的非空集合, 它们的并是有穷集合。''
+
+  \noindent 请问, 该命题是否正确。如果正确, 请给出例子。如果不正确, 请给出(反面的)证明。
 \end{problem}
 
 \begin{proof}
@@ -49,30 +53,13 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{5} $\star\star\star$]
-  Give an example, if possible, of
-  \begin{enumerate}[(a)]
-    \item a countably infinite collection of \blue{\it pairwise disjoint} nonempty sets whose union is finite.
-    \item a countably infinite collection of nonempty sets whose union is finite.
-  \end{enumerate}
-\end{problem}
+\begin{problem}[\score{3} $\star\star\star\star$]
+  请自行查找并阅读 Cantor-Schr\"{o}der–Bernstein 定理的某个证明,
+  理解它, 放下你手头的资料~\footnote{不要偷看哦}, 然后尝试自己写出这个证明~\footnote{
+    是不是又偷看了 (为什么明明懂了, 但就是表达不出来?)}。
 
-\begin{proof}
-\end{proof}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{problem}[\score{5} $\star\star\star\star$]
-  \begin{theorem}[Cantor-Schr\"{o}der–Bernstein (1887)]
-    \[
-      |X| \le |Y| \land |Y| \le |X| \implies |X| = |Y|
-    \]
-    \[
-      \exists\; f: X \xrightarrow{1-1} Y \land g: Y \xrightarrow{1-1} X
-      \implies \exists\; h: X \xleftrightarrow[\text{onto}]{1-1} Y
-    \]
-  \end{theorem}
-
+  \vspace{1em}
+  \noindent 以下证明供参考~\footnote{pdf 版本见``\textsl{8-infinity.zip}''压缩包}:
   {\href{https://en.wikipedia.org/wiki/Schr\%C3\%B6der\%E2\%80\%93Bernstein\_theorem}{\teal{\footnotesize Schr\"{o}der–Bernstein theorem @ wiki}}}
 \end{problem}
 
