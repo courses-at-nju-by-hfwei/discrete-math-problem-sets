@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{6. 集合: 函数 (6-function)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年04月15日 发布作业 \\ 2021年04月2x日 发布答案}
+\date{2021年04月15日 发布作业 \\ 2021年05月01日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -40,6 +40,21 @@
 \end{problem}
 
 \begin{proof}
+  \begin{itemize}
+    \item 先证 $[a]_{R} = [b]_{R} \implies a R b$: \\
+      假设 $[a]_{R} = [b]_{R}$。
+      首先, $b \in [b]_{R}$, 因此 $b \in [a]_{R} = [b]_{R}$, 故 $a R b$。
+    \item 再证 $a R b \implies [a]_{R} = [b]_{R}$: \\
+  　　假设 $a R b$。任取 $x$,
+      \setcounter{equation}{0}
+      \begin{align}
+        & x \in [a]_{R} \\[6pt]
+        \iff & a R x \\[6pt]
+        \iff & b R x \qquad (\because a R b) \\[6pt]
+        \iff & x \in [b]_{R}
+      \end{align}
+      因此, $[a]_{R} = [b]_{R}$。
+  \end{itemize}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -56,6 +71,56 @@
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item 只需证
+      \begin{itemize}
+        \item $R$ 是自反的。\\
+          任取 $x \in X$,
+          \[
+            f(x) = f(x) \implies (x, x) \in R.
+          \]
+        \item $R$ 是对称的。\\
+          任取 $x_{1}, x_{2} \in X$,
+          \begin{align*}
+            & (x_{1}, x_{2}) \in R \\
+            \implies & f(x_{1}) = f(x_{2}) \\
+            \implies & f(x_{2}) = f(x_{1}) \\
+            \implies & (x_{2}, x_{1}) \in R.
+          \end{align*}
+        \item $R$ 是传递的。\\
+          任取 $x_{1}, x_{2}, x_{3} \in X$,
+          \begin{align*}
+            & (x_{1}, x_{2}) \in R \land (x_{2}, x_{3}) \in R \\
+            \implies & f(x_{1}) = f(x_{2}) \land f(x_{2}) = f(x_{3}) \\
+            \implies & f(x_{1}) = f(x_{3}) \\
+            \implies & (x_{1}, x_{3}) \in R.
+          \end{align*}
+      \end{itemize}
+    \item 要证 $h$ 是函数, 只需证
+      \begin{itemize}
+        \item $\forall S \in X/R.\; \exists y \in Y.\; h(S) = y$。\\
+          设 $X/R = [x]_{R}$。取 $y = f(x)$ 即可。
+        \item $\forall S \in X/R.\; \exists y_{1}, y_{2} \in Y.\;
+          ((h(S) = y_{1} \land h(S) = y_{2}) \implies y_{1} = y_{2})$。\\
+          根据 $h$ 的定义,
+          \[
+            \exists x_{1} \in X.\; ([x_{1}]_{R} = S \land f(x_{1}) = y_{1}),
+          \]
+          \[
+            \exists x_{2} \in X.\; ([x_{2}]_{R} = S \land f(x_{2}) = y_{2}).
+          \]
+          因此,
+          \begin{align*}
+            & [x_{1}]_{R} = [x_{2}]_{R} \\
+            \implies & (x_{1}, x_{2}) \in R \\
+            \implies & f(x_{1}) = f(x_{2}) \qquad (\because \text{第一题结论}) \\
+            \implies & y_{1} = y_{2}
+          \end{align*}
+      \end{itemize}
+      要证 $h$ 是满射, 只需证 $\forall y \in Y.\; \exists S \in X/R.\; h(S) = y$。\\
+      因为 $f$ 是满射, 对于任意 $y \in Y$, 存在 $x_{0}$, 使得 $f(x_{0}) = y$。
+      故, 取 $S = [x_{0}]_{R}$ 即可。
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
