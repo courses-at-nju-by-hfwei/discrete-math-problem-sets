@@ -1,0 +1,129 @@
+% hw9-paths-cycles.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{9. 图论: 路径与圈 (9-paths-cycles)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年5月6日}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{3} $\star\star\star$]
+  设 $G = (V, E)$ 是无向图 (不一定是简单无向图),
+  其中 $|E| = m$。
+  请证明\footnote{这也说明了, $G$ 中度数为奇数的顶点数目为偶数。},
+  \[
+    \sum_{v \in V} \deg(v) = 2m.
+  \]
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star$]
+  请证明: 每个长度为奇数的闭道路 (closed walk) 都包含一个长度为奇数的圈 (cycle)~\footnote{
+    ``长度''就是所含边的条数。}。
+
+  \vspace{1em}
+  \noindent (提示: 可用数学归纳法。如果你使用数学归纳法, 请注意数学归纳法的书写规范。)
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4 = 2 + 2} $\star\star\star$]
+  设 $G$ 是一个简单无向图 (undirected simple graph) 且满足
+  \[
+    \delta(G) \ge k,
+  \]
+  其中 $k \in \mathbb{N}^{+}$ 为常数。
+  请证明:
+  \begin{enumerate}[(1)]
+    \item $G$ 包含长度 $\ge k$ 的路径;
+    \item 如果 $k \ge 2$, 则 $G$ 包含长度 $\ge k + 1$ 的圈。
+  \end{enumerate}
+
+  \vspace{1em}
+  \noindent (提示: 想想我们在课上使用了两次的那个证明技巧。)
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4 = 1 + 2 + 1} $\star\star$]
+  考虑下图, 记为 $G$。
+  \fig{width = 0.40\textwidth}{figs/Euler-graph}
+  \begin{enumerate}[(1)]
+    \item $G$ 是否是欧拉图? 请说明理由。
+    \item 如果是欧拉图, 请将其分解为若干圈的组合, 并给出一个欧拉回路~\footnote{
+    　注意: 在课上, 我们用了英文术语``Eulerian Cycle''。有的教材上使用 ``Eulerian Circuit''。
+    　后者更严谨一些, 因为它可能包含重复的顶点。};
+      如果不是欧拉图, 至少需要添加几条边才能使得它成为欧拉图?
+    　(可以自行为顶点编号, 也可以使用图上边的编号描述回路。)
+    \item (本小题与$G$无关) 假设某图不是欧拉图, 但含有欧拉迹,
+      请用一两句话说明如何找出图中的欧拉迹。
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{5} $\star\star\star\star$]
+  请证明: 对于 $4 \times n$ 的棋盘, 不存在一种走法,
+  使得``馬''可以踏遍每个格子一次并回到出发点。
+  \fig{width = 0.50\textwidth}{figs/chessboard-4-n}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
