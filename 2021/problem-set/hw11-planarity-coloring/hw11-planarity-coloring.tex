@@ -1,4 +1,4 @@
-% hw10-trees.tex
+% hw11-planarity-coloring.tex
 
 % !TEX program = xelatex
 %%%%%%%%%%%%%%%%%%%%
@@ -8,9 +8,9 @@
 
 \input{hw-preamble} % feel free to modify this file if you understand LaTeX well
 %%%%%%%%%%%%%%%%%%%%
-\title{10. 图论: 树 (10-trees)}
+\title{11. 图论: 平面图与图着色 (11-planarity-coloring)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年5月13日}
+\date{2021年5月21日}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -30,12 +30,23 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{4} $\star\star$]
-  设 $T$ 是树且每个顶点的度数要么为1, 要么为 $k$。
-  请证明~\footnote{我们经常使用 $n(G)$ 表示 $G$ 的顶点数。}~\footnote{提示:
-  关于顶点度数, 我们有什么定理可用?}:
+\begin{problem}[\score{4} $\star\star\star$]
+  假设 $G$ 是顶点数 $\ge 11$ 的简单图, $\overline{G}$ 是 $G$ 的补图~\footnote{
+    补图: 顶点集相同, 但是 $e$ 是 $G$ 的边当且仅当 $e$ 不是 $\overline{G}$ 的边。
+  }。
+  请证明, $G$ 和 $\overline{G}$ 不同为平面图。
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star$]
+  假设 $G$ 是包含 $n$ 个顶点的$d$-正则简单图。
+  请证明
   \[
-    n(T) = \ell (k-1) + 2, \quad\ell \in \mathbb{N}.
+    \chi(G) \ge \frac{n}{n-d}.
   \]
 \end{problem}
 
@@ -45,8 +56,11 @@
 
 %%%%%%%%%%%%%%%
 \begin{problem}[\score{4} $\star\star\star$]
-  给定无向图 $G$。
-  请证明: $G$ 是树当且仅当 $G$ 没有 loop且 $G$ 有唯一的生成树。
+  假设 $G$ 是不包含三角形 $\triangle$ 的简单平面图。
+  \begin{enumerate}[(1)]
+    \item 请使用Euler公式证明 $G$ 含有度数 $\le 3$ 的顶点。
+    \item 请使用数学归纳法证明 $G$ 是 $4$-可着色的。
+  \end{enumerate}
 \end{problem}
 
 \begin{proof}
@@ -54,10 +68,13 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{4} $\star\star\star$]
-  给定无向连通图 $G$ 与 $G$ 中的某条边 $e$。
-  请证明: $e$ 是桥 (bridge~\footnote{bridge 也称为 cut-edge (割边)。})
-    当且仅当 $e$ 属于 $G$ 的每个生成树。
+\begin{problem}[\score{4} $\star\star$]
+  假设图 $G_{1}$ 与 $G_{2}$ 是 homeomorphic 的。请证明~\footnote{
+    $m$, $n$ 分别表示边数与点数。
+  }:
+  \[
+    m_{1} - n_{1} = m_{2} - n_{2}.
+  \]
 \end{problem}
 
 \begin{proof}
@@ -65,41 +82,17 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{4 = 2 + 2} $\star\star$]
-  请分别使用 Kruskal 算法与 Prim 算法 (从顶点1开始)
-  给出下图的最小生成树~\footnote{以后你会明白, Kruskal
-  算法与Prim算法的难度不在算法本身, 而在于搞清楚哪个是哪个。}
-  要求给出边添加的顺序 (在有多种选择时, 优先选择编号较小的顶点)。
-
-  \fig{width = 0.50\textwidth}{figs/st-example}
+\begin{problem}[\score{4} $\star\star$]
+  请使用 Kuratowski 定理说明下图不是平面图~\footnote{你不需要制作\textsf{.gif}。}:
+  \fig{width = 0.50\textwidth}{figs/planarity}
 \end{problem}
 
 \begin{proof}
 \end{proof}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{problem}[\score{4} $\star\star\star\star$]
-  设 $G$ 是无向连通带权图, $T$ 是 $G$ 的一个最小生成树。
-
-  \noindent 请证明: $T$ 是 $G$ 的唯一最小生成树当且仅当
-  对于不在 $T$ 中的每一条边 $e$,
-  $e$ 的权重大于 $T + e$ 所产生的圈中其它每条边的权重。
-\end{problem}
-
-\begin{proof}
-\end{proof}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{problem}[\score{$-10$}]
-  \fig{width = 0.70\textwidth}{figs/Bourne}
-\end{problem}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 % 如果没有需要订正的题目，可以把这部分删掉
-
 \begincorrection
 %%%%%%%%%%%%%%%%%%%%
 
