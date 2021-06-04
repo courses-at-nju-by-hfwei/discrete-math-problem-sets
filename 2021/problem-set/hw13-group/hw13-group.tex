@@ -30,7 +30,55 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{5 = 2 + 3} $\star\star$]
+\begin{problem}[\score{4} $\star\star$]
+  请给出以下网络的一个最大流与一个最小割。
+  要求给出 Ford-Fulkerson Method 运行过程。
+  \fig{width = 0.50\textwidth}{figs/network-flow}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{5 = 1 + 1 + 3} $\star\star\star\star$]
+  考虑下面的定理:
+  \begin{theorem}[不能告诉你名字的某个著名定理]
+    设 $G = (V, E)$ 是无向连通图, $v, w \in V$ 是不同的两个顶点。
+    则 $v$, $w$ 之间的边不相交的 (edge-disjoint)~\footnote{
+      设 $P_{1}$, $P_{2}$ 是两条$v$、$w$间的路径。
+      如果 $P_{1}$ 与 $P_{2}$ 没有公共边,
+      则 $P_{1}$、$P_{2}$ 是 $v$, $w$ 之间的边不相交的路径。
+    } 路径的最大条数
+    等于最小$vw$-边割集~\footnote{
+      设 $F \subseteq E$ 为集。
+      如果 $G$ 删除 $F$ 后, $v$ 与 $w$ 不再连通,
+      则称 $F$ 是 $vw$-边割集。
+    }的大小。
+  \end{theorem}
+
+  \fig{width = 0.50\textwidth}{figs/edge-disjoint}
+
+  \begin{enumerate}[(1)]
+    \item 考虑图中的 $v$, $w$ 顶点。
+      请给出 $v$、$w$ 间的一个最大边不相交的路径集合。
+    \item 考虑图中的 $v$, $w$ 顶点。
+      请给出一个最小的 $vw$-边割集。
+    \item 请使用最大流-最小割定理证明上述定理~\footnote{恭喜!你刚刚证明了图论中的一个著名定理。}。
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{3} $\star\star$]
+  在整数集 $\mathbb{Z}$ 中, 规定运算 $\oplus$ 如下:
+  \[
+    \forall a, b \in \mathbb{Z}, a \oplus b = a + b - 2.
+  \]
+  请证明: $(\mathbb{Z}, \oplus)$ 构成群。
 \end{problem}
 
 \begin{proof}
@@ -39,6 +87,9 @@
 
 %%%%%%%%%%%%%%%
 \begin{problem}[\score{5} $\star\star\star$]
+  设 $G$ 是群。
+  请证明: 如果 $\forall x \in G.\; x^2 = e$,
+  则 $G$ 是交换群。
 \end{problem}
 
 \begin{proof}
@@ -46,15 +97,8 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-\begin{problem}[\score{5} $\star\star\star\star$]
-\end{problem}
-
-\begin{proof}
-\end{proof}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{problem}[\score{5} $\star\star$]
+\begin{problem}[\score{3} $\star\star$]
+  请求出 $3^{83}$ 的最后两位数~\footnote{\url{https://www.wolframalpha.com/input/?i=3\%5E83}}。要求给出计算过程。
 \end{problem}
 
 \begin{proof}
