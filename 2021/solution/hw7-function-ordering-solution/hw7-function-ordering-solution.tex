@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{7. 集合: 函数与序关系 (7-function-ordering)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年04月22日 发布作业 \\ 2021年05月xx日 发布答案}
+\date{2021年04月22日 发布作业 \\ 2021年06月05日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -40,6 +40,34 @@
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item 对于任意 $b \in B$,
+      \begin{align}
+        &b \in f(A_{1} \cup A_{2}) \\
+        \iff & \exists a \in A_{1} \cup A_{2}.\; f(a) = b \\
+        \iff & (\exists a \in A_{1}.\; f(a) = b) \lor (\exists a \in A_{2}.\; f(a) = b) \\
+        \iff & b \in f(A_{1}) \lor b \in f(A_{2}) \\
+        \iff & b \in f(A_{1}) \cup f({A_{2}})
+      \end{align}
+    \item 对于任意 $a \in A$,
+      \setcounter{equation}{0}
+      \begin{align}
+        &a \in f^{-1}(B_{1} \setminus B_{2}) \\
+        \iff & f(a) \in B_{1} \setminus B_{2} \\
+        \iff & f(a) \in B_{1} \land f(a) \notin B_{2} \\
+        \iff & a \in f^{-1}(B_{1}) \land \lnot(a \in f^{-1}(B_{2})) \\
+        \iff & a \in f^{-1}(B_{1}) \land a \notin f^{-1}(B_{2}) \\
+        \iff & a \in f^{-1}(B_{1}) \setminus f^{-1}(B_{2})
+      \end{align}
+    \item 对于任意 $b \in B$,
+      \setcounter{equation}{0}
+      \begin{align}
+        &b \in f(f^{-1}(B_{0})) \\
+        \iff & \exists a \in f^{-1}(B_{0}).\; b = f(a) \\
+        \iff & \exists a \in A.\; f(a) \in B_{0} \land b = f(a) \\
+        \implies & b \in B_{0}
+      \end{align}
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -54,6 +82,36 @@
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item 任取 $c \in C$。
+      由于 $g$ 是满射,
+      \[
+        \exists b \in B.\; g(b) = c.
+      \]
+      任取 $b_{0}$ 满足 $g(b_{0}) = c$。
+      由于 $f$ 是满射,
+      \[
+        \exists a \in A.\; f(a) = b_{0}.
+      \]
+      任取 $a_{0}$ 满足 $f(a_{0}) = b_{0}$。
+      则有
+      \[
+        (g \circ f)(a_{0}) = c.
+      \]
+    \item 任取 $a_{1}, a_{2} \in A$。
+      假设 $f(a_{1}) = f(a_{2})$, 则
+      \[
+        g(f(a_{1})) = g(f(a_{2})),
+      \]
+      即
+      \[
+        (g \circ f)(a_{1}) = (g \circ f)(a_{2}).
+      \]
+      由于 $g \circ f$ 是单射,
+      \[
+        a_{1} = a_{2}.
+      \]
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -67,6 +125,11 @@
 \end{problem}
 
 \begin{proof}
+  首先, $f \circ g = I_{B}$ 是满射, 因此 $f$ 是满射。\\
+  其次, $g \circ f = I_{A}$ 是单射, 因此 $f$ 是单射。\\
+  所以, $f$ 是双射。\\
+  又由于 $f \circ g = I_{B}$, 因此 $g = f^{-1}$。
+  \marginnote{该证明用到了课件中的两个定理, 请自行找出来。}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -92,6 +155,45 @@
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \setcounter{enumi}{1}
+    \item 只需验证
+      \begin{description}
+        \item[$\le$ 是自反的:] 任取 $Y \in X/\sim$。
+          设 $Y = [y]_{\sim}$。由于 $\preceq$ 是自反的,
+          \[
+            y \preceq y.
+          \]
+          根据 $\le$ 的定义,
+          \[
+            [y]_{\sim} \le [y]_{\sim}.
+          \]
+          即
+          \[
+            Y \le Y.
+          \]
+        \item[$\le$ 是反对称的:]
+          任取 $Y \in X/\sim$, $Z \in X/\sim$。
+          设 $Y = [y]_{\sim}$, $Z = [z]_{\sim}$。
+          \begin{align*}
+            &Y \le Z \land Z \le Y \\
+            \implies & y \preceq z \land z \preceq y \\
+            \implies & y \sim z \\
+            \implies & [y]_{\sim} = [z]_{\sim} \\
+            \implies & Y = Z.
+          \end{align*}
+        \item[$\le$ 是传递的:]
+          任取 $W\in X/\sim, Y \in X/\sim$, $Z \in X/\sim$。
+          设 $W = [w]_{\sim}, Y = [y]_{\sim}$, $Z = [z]_{\sim}$。
+          \begin{align*}
+            & W \le Y \land Y \le Z \\
+            \implies & w \preceq y \land y \preceq z \\
+            \implies & w \preceq z \\
+            \implies & [w]_{\sim} \le [z]_{\sim} \\
+            \implies & W \le Z.
+          \end{align*}
+      \end{description}
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
