@@ -1,0 +1,129 @@
+% hw14-subgroup.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{14. 群论: 子群 (14-subgroup)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年6月11日}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star$]
+  设 $H \le G$。请证明,
+  \[
+    aH = H \iff a \in H \iff aH \le G
+  \]
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{5 = 2 + 3} $\star\star\star$]
+  设 $\phi$ 是从群 $G$ 到 $G'$ 的同态映射。
+  请证明,
+  \begin{enumerate}[(1)]
+    \item
+      \[
+        H \le G \implies \phi(H) \le G'.
+      \]
+    \item
+      \[
+        H \triangleleft G \implies \phi(H) \triangleleft G'.
+      \]
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{3} $\star\star$]
+  请计算
+  \[
+    \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 \\
+      1 & 3 & 4 & 5 & 2
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 \\
+      3 & 2 & 4 & 1 & 5
+    \end{pmatrix},
+  \]
+  并将结果写成(不相交)轮换的乘积。
+\end{problem}
+
+\begin{solution}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{3} $\star\star\star$]
+  考虑如下定义。
+  \begin{definition}[元素的阶]
+    设 $G$ 是有限群, $e$ 为 $G$ 的单位元, $a \in G$。
+    使 $a^{r} = e$ 成立的最小正整数称为 $a$ 的阶
+    (order)~\footnote{注意, 群的阶指的是集合 $G$ 的大小, 即 $|G|$。},
+    记作 $\text{ord}\; a = r$。
+  \end{definition}
+  设 $G$ 是有限群。请证明,
+  \[
+    \forall a \in G.\; (\text{ord}\; a) \big\vert |G|.
+  \]
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{5 = 2 + 1 + 2} $\star\star\star$]
+  考虑从乘法群 $\R^{\ast} = \R \setminus \set{0}$
+  到乘法群 $\R^{+}$ 的函数 $f: x \mapsto |x|$。
+  \begin{enumerate}[(1)]
+    \item 请证明, $f$ 是从 $\R^{\ast}$ 到 $\R^{+}$ 的同态。
+    \item 求 $\text{Ker}\; \phi$。
+    \item 套用群同态基本定理, 给出相应结论, 并用一两句话解释该结论。
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
