@@ -1,0 +1,188 @@
+% hw10-trees-solution.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{10. 图论: 树 (10-trees)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年05月13日 发布作业 \\ 2021年06月xx日 发布答案}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star$]
+  设 $T$ 是树且每个顶点的度数要么为1, 要么为 $k$。
+  请证明~\footnote{我们经常使用 $n(G)$ 表示 $G$ 的顶点数,
+    很多时候也简写为 $n$。}~\footnote{提示:
+  关于顶点度数, 我们有什么定理可用?}:
+  \[
+    n(T) = \ell (k-1) + 2, \quad \text{for some } \ell \in \mathbb{N}.
+  \]
+\end{problem}
+
+\begin{proof}
+  设度数为 $k$ 的顶点数为 $m$, 则
+  \[
+    mk + (n-m) = 2n - 2.
+  \]
+  化简得,
+  \[
+    n = m(k - 1) + 2.
+  \]
+  得证。
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star$]
+  给定无向图 $G$。
+  请证明: $G$ 是树当且仅当 $G$ 没有 loop 且 $G$ 有唯一的生成树。
+\end{problem}
+
+\begin{proof}
+  分两个方向证明。
+  \begin{itemize}
+    \item $\implies:$ 假设 $G$ 是树。显然, $G$ 没有 loop。
+      反设 $G$ 有两个不同的生成树 $T_{1}$, $T_{2}$。
+      $T_{2}$ 中至少存在一条不在 $T_{1}$ 中的边, 记为 $e$。
+      因此, $G$ 包含 $T_{1}$ 与 $e$。故 $G$ 包含圈。
+      与 $G$ 是树矛盾。
+    \item $\Longleftarrow:$ 假设 $G$ 没有 loop 且有唯一的生成树。
+      下证
+      \begin{itemize}
+        \item $G$ 是连通的。因为 $G$ 有生成树, 故 $G$ 是连通的。
+        \item $G$ 是无圈的。反设 $G$ 中有圈, 记为 $C$。
+          设 $T$ 是 $G$ 的唯一的生成树。
+          $C$ 中必存在一条不在 $T$ 中的边, 记为 $e$。
+          将 $e$ 加入 $T$ 中, 必形成圈, 记为 $C'$。
+          从 $C'$ 中删掉一条边 $e' \neq e$,
+          得到 $G$ 的一个生成树 $T' = T + e - e'$。
+          $T' \neq T$, 与 $T$ 的唯一性矛盾。
+      \end{itemize}
+  \end{itemize}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star$]
+  给定无向连通图 $G$ 与 $G$ 中的某条边 $e$。
+  请证明: $e$ 是桥 (bridge~\footnote{bridge 也称为 cut-edge (割边)。})
+    当且仅当 $e$ 属于 $G$ 的每个生成树。
+\end{problem}
+
+\begin{proof}
+  分两个方向证明。
+  \begin{itemize}
+    \item $\implies:$ 假设 $e$ 是桥。
+      反设 $e$ 不属于 $G$ 的某个生成树 $T$。
+      将 $e$ 加入 $T$ 中, 则形成一个包含 $e$ 的圈。
+      所以, $e$ 不是桥。矛盾。
+    \item $\Longleftarrow:$ 假设 $e$ 属于 $G$ 的每个生成树。
+      反设 $e$ 不是桥, 则 $e$ 在某个圈中。
+      因此, 存在某个生成树不包含 $e$
+      (否则, 使用类似 Cycle Property 的证明, 可以构造出不包含 $e$ 的生成树)。
+      矛盾。
+  \end{itemize}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4 = 2 + 2} $\star\star$]
+  请分别使用 Kruskal 算法与 Prim 算法 (从顶点1开始)
+  给出下图的最小生成树~\footnote{以后你会明白, Kruskal
+  算法与Prim算法的难度不在算法本身, 而在于搞清楚哪个是哪个。}
+  要求给出边添加的顺序 (在有多种选择时, 优先选择编号较小的顶点)。
+
+  \fig{width = 0.50\textwidth}{figs/st-example}
+\end{problem}
+
+\begin{proof}
+  \begin{itemize}
+    \item Kruskal 算法: 加边顺序为
+      \[
+        \set{1, 4}, \set{1, 2}, \set{2, 3}, \set{1, 5}, \set{2, 6}.
+      \]
+    \item Prim 算法: 加边顺序为~\footnote{我没注意到会是一样的}
+      \[
+        \set{1, 4}, \set{1, 2}, \set{2, 3}, \set{1, 5}, \set{2, 6}.
+      \]
+  \end{itemize}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star\star$]
+  设 $G$ 是无向连通带权图, $T$ 是 $G$ 的一个最小生成树。
+
+  \noindent 请证明: $T$ 是 $G$ 的唯一最小生成树当且仅当
+  对于不在 $T$ 中的每一条边 $e$,
+  $e$ 的权重大于 $T + e$ 所产生的圈中其它每条边的权重。
+\end{problem}
+
+\begin{proof}
+  分两个方向证明。
+  \begin{itemize}
+    \item $\implies:$ 假设 $T$ 是 $G$ 的唯一最小生成树。
+      反设\blue{存在}一条不在 $T$ 中的边 $e$,
+      $w(e)$ \blue{不大于} $T + e$ 所产生的圈中其它\blue{某条边} $e'$ 的权重。
+      则 $T' = T + e - e'$ 是一个权重不大于 $w(T)$ 的生成树。
+      与 $T$ 的唯一性矛盾。
+    \item $\Longleftarrow:$ 反设 $G$ 还有一棵最小生成树 $T' \neq T$。
+      $T'$ 中至少存在一条不在 $T$ 中的边, 记为 $e$。
+      将 $e$ 加入 $T$ 中, 形成一个圈 $C$。
+      根据前提条件, $e$ 是 $C$ 中权重最大的唯一一条边。
+      根据 Cycle Property, $e$ 不在任何最小生成树中。
+      这与 $e \in T'$ 矛盾。
+  \end{itemize}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{$-10$}]
+  \fig{width = 0.70\textwidth}{figs/Bourne}
+\end{problem}
+
+\begin{solution}
+  不看的后果会很严重: 省下不少时间。
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
