@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{9. 图论: 路径与圈 (9-paths-cycles)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年05月06日 发布作业 \\ 2021年06xx日 发布答案}
+\date{2021年05月06日 发布作业 \\ 2021年06月12日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -40,6 +40,10 @@
 \end{problem}
 
 \begin{proof}
+  每条边贡献了 2 度。所以~\footnote{这也被称为 ``握手定理''。},
+  \[
+    \sum_{v \in V} \deg(v) = 2m.
+  \]
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -53,6 +57,21 @@
 \end{problem}
 
 \begin{proof}
+  对闭道路的长度 $l$ 作强数学归纳。
+  \begin{description}
+    \item[基础步骤:] $l = 1$。长度为 1 的闭道路即是长度为 1 的圈。显然成立。
+    \item[归纳假设:] 假设每个长度为奇数 $1 \le l < k$ ($k$ 为奇数)
+      的闭道路都包含一个长度为奇数的圈。
+    \item[归纳步骤:] 考虑长度为奇数 $k > 1$ 的闭道路 $W$。
+      分两种情况讨论:
+      \begin{itemize}
+        \item 如果 $W$ 中不包含重复顶点 (除了起点与终点), 则 $W$ 即为长度为奇数的圈。
+        \item 不妨设 $W$ 中包含重复顶点 (除了起点与终点) $v$.
+          $W$ 可看作两条起点、终点均为 $v$ 的闭道路。
+          其中必有一条的长度为奇数, 记该闭道路为 $U$, 长度为 $u$,
+          有 $1 \le u < k$。根据归纳假设, $U$ 中包含一个长度为奇数的圈。
+      \end{itemize}
+  \end{description}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -74,6 +93,16 @@
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item 考虑 $G$ 中的一条极大路径 $P$。设 $u$ 是 $P$ 的一个端点。
+      因为 $P$ 是极大路径, $u$ 的所有邻居顶点都在 $P$ 上。
+      因为 $\deg(u) \ge \delta(G) \ge k$ 且 $G$ 是简单图,
+      所以除了端点 $u$, $P$ 至少还包含 $k$ 个顶点。
+      故, $P$ 的长度 $\ge k$。
+    \item 假设 $k \ge 2$。设 $v$ 是 $u$ 的邻居顶点中距离 $u$ 最远
+      (在顺着路径 $P$ 的意义下) 的顶点。则边 $\set{u, v}$ 以及
+      路径 $P$ 中从 $u$ 到 $v$ 的一段子路径构成了长度 $\ge k + 1$ 的圈。
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -94,6 +123,19 @@
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item $G$ 是欧拉图。因为 $G$ 中每个顶点的度数都是偶数。
+    \item 可将 $G$ 分解成如下三个圈的组合:
+      \begin{itemize}
+        \item $A-B-F-H-K$
+        \item $C-G-J$
+        \item $D-E-I$
+      \end{itemize}
+      一个欧拉回路: $A-B-C-D-E-F-G-H-I-J-K$~\footnote{嗯, 一定是这样}。
+    \item 该图, 记为 $G$, 有且仅有两个奇度顶点, 记为 $u$, $v$。
+      连接 $u$, $v$, 得到欧拉图 $G'$。
+      求 $G'$ 的一条欧拉回路, 删除边 $\set{u, v}$, 即得原图 $G$ 的一条欧拉迹。
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -105,6 +147,9 @@
 \end{problem}
 
 \begin{proof}
+  考虑左图。删除中间两行中的 $n$ 个深色格子,
+  则上下两行中的 $n$ 个浅色格子成为孤立点, 而剩下的 $2n$ 个格子至少包含一个连通分支。
+  因此, 该图不存在哈密顿回路。
 \end{proof}
 %%%%%%%%%%%%%%%
 
