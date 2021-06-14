@@ -1,0 +1,182 @@
+% hw11-planarity-coloring-solution.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{11. 图论: 平面图与图着色 (11-planarity-coloring)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年05月21日 发布作业 \\ 2021年06月14日 发布答案}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star$]
+  假设 $G$ 是顶点数 $\ge 11$ 的简单图, $\overline{G}$ 是 $G$ 的补图~\footnote{
+    补图: 顶点集相同, 但是 $e$ 是 $G$ 的边当且仅当 $e$ 不是 $\overline{G}$ 的边。
+  }。
+  请证明, $G$ 和 $\overline{G}$ 不同为平面图。
+\end{problem}
+
+\begin{proof}
+  反设 $G$ 和 $\overline{G}$ 都是平面图。因此,
+  \begin{align}
+    m \le 3n - 6 \\
+    \overline{m} \le 3n - 6 \\
+    m + \overline{m} = \frac{n(n-1)}{2}
+  \end{align}
+  解得~\footnote{\url{https://www.wolframalpha.com/input/?i=n\%5E2+-+13n+\%2B+24+\%3C\%3D+0}},
+  \[
+    \frac{13 -\sqrt{73}}{2} \le n \le \frac{13 + \sqrt{73}}{2}.
+  \]
+  其整数解为
+  \[
+    n \in \mathbb{Z} \land 3 \le n \le 10.
+  \]
+  与 $n \ge 11$ 矛盾。
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star$]
+  假设 $G$ 是包含 $n$ 个顶点的$d$-正则简单图。
+  请证明
+  \[
+    \chi(G) \ge \frac{n}{n-d}.
+  \]
+\end{problem}
+
+\begin{proof}
+  反设
+  \[
+    \chi(G) < \frac{n}{n-d}.
+  \]
+  因此, 将 $G$ 中顶点按照颜色归类, 可以将 $G$ 划分成 $< \frac{n}{n-d}$ 组,
+  每组内的顶点两两不相邻~\footnote{注, 这种组被称为``独立集''}。
+  根据鸽笼原理, 至少存在一组含有 $> \frac{n}{\frac{n}{n-d}} = n - d$ 个顶点。
+  由于 $G$ 是 $d$-正则简单图, 该组中必有两顶点相邻。矛盾。
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star\star$]
+  假设 $G$ 是不包含三角形 $\triangle$ 的简单平面图。
+  \begin{enumerate}[(1)]
+    \item 请使用Euler公式证明 $G$ 含有度数 $\le 3$ 的顶点。
+    \item 请使用数学归纳法证明 $G$ 是 $4$-可着色的。
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  \begin{enumerate}[(1)]
+    \item 反设 $\delta(G) \ge 4$。因此,
+      \[
+        \sum_{v} \deg(v) \ge 4n.
+      \]
+      由于 $G$ 是不包含$\triangle$的简单平面图,
+      \[
+        m \le 2n - 4.
+      \]
+      根据握手定理,
+      \[
+        \sum_{v} \deg(v) = 2m \le 4n - 8.
+      \]
+      矛盾。
+    \item 对 $G$ 中顶点数 $n$ 作归纳。
+      \begin{description}
+        \item[基础步骤:] $n = 1$。$G$ 显然是 $4$-可着色的。
+        \item[归纳假设:] 假设命题对包含 $1 \le k = n-1$ 个顶点的任意符合要求的图均成立。
+        \item[归纳步骤:] 考虑包含 $n$ 个顶点的图 $G$。根据 (1), $G$ 中包含度数 $\le 3$
+          的顶点, 记为 $v$。从 $G$ 中删除 $v$, 得到图 $G'$。$G'$ 包含 $n-1$ 个顶点,
+          且是不包含$\triangle$的简单平面图。根据归纳假设, $G'$ 是 $4$-可着色的。
+          考虑 $G'$ 的任意一种 $4$-着色方案, 将 $v$ (及删除的边) 加入 $G'$, 重新得到图 $G$。
+          因为 $\deg(v) \le 3$, 所以 $G$ 是 $4$-可着色的。
+      \end{description}
+  \end{enumerate}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star$]
+  假设图 $G_{1}$ 与 $G_{2}$ 是 homeomorphic 的。请证明~\footnote{
+    $m$, $n$ 分别表示边数与点数。
+  }:
+  \[
+    m_{1} - n_{1} = m_{2} - n_{2}.
+  \]
+\end{problem}
+
+\begin{proof}
+  分别考虑``插入''与``收缩''2度顶点的操作:
+  \begin{itemize}
+    \item 对于``插入''一个2度顶点, 顶点数 $n$ 加一, 边数 $m$ 加一, 所以 $m-n$ 保持不变。
+    \item 对于``收缩''一个2度顶点, 顶点数 $n$ 减一, 边数 $m$ 减一, 所以 $m-n$ 保持不变。
+  \end{itemize}
+  对从 $G_{1}$ 转化到 $G_{2}$ 的``插入/收缩''操作序列的长度作归纳, 即得证。
+  % 假设 $G_{1}$ 通过长度为 $n$ 的``插入/收缩''操作序列得到 $G_{2}$:
+  % \[
+  %   G_{1}^{0} = G_{1} \to G_{1}^{1} \to G_{1}^{2} \to \dots \to G_{1}^{n} = G_{2}.
+  % \]
+  % 我们证明一个更强的结论:
+  % \[
+  %   \forall 0 \le i \le j \le n.\;
+  %     m_{i} - n_{i} = m_{j} - n_{j}.
+  % \]
+  % 对序列长度 $n$ 作归纳。
+  % \begin{description}
+  %   \item[基础步骤:] $n = 0$。$G_{1} = G_{2}$。结论显然成立。
+  %   \item[归纳假设:] 假设结论对 $1 \le k = n - 1$ 成立。
+  %   \item[归纳步骤:]
+  % \end{description}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star$]
+  请使用 Kuratowski 定理说明下图不是平面图~\footnote{你不需要制作\textsf{.gif}。}:
+  \fig{width = 0.50\textwidth}{figs/planarity}
+\end{problem}
+
+\begin{proof}
+  先去掉图内部中间的两个点, 然后收缩剩下的所有2度顶点, 得到一个 $K_{3,3}$。
+  根据 Kuratowski 定理, 该图不是平面图。
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
