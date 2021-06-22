@@ -1,0 +1,125 @@
+% hw13-group-solution.tex
+
+% !TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%
+% see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
+% for how to use tufte-handout
+\documentclass[a4paper, justified]{tufte-handout}
+
+\input{hw-preamble} % feel free to modify this file if you understand LaTeX well
+%%%%%%%%%%%%%%%%%%%%
+\title{13. 群论: 基本概念 (13-group)}
+\me{魏恒峰}{hfwei@nju.edu.cn}{}{}
+\date{2021年06月04日 发布作业 \\ 2021年06月23日 发布答案}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % PLEASE DON'T DELETE THIS LINE!
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+  % \mfigcap{width = 0.85\textwidth}{figs/George-Boole}{George Boole}
+  % \begin{center}{\fcolorbox{blue}{yellow!60}{\parbox{0.65\textwidth}{\large
+  %   \begin{itemize}
+  %     \item
+  %   \end{itemize}}}}
+  % \end{center}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+\beginrequired
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{4} $\star\star$]
+  请给出以下网络的一个最大流与一个最小割。
+  要求给出 Ford-Fulkerson Method 运行过程。
+  \fig{width = 0.50\textwidth}{figs/network-flow}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{5 = 1 + 1 + 3} $\star\star\star\star$]
+  考虑下面的定理:
+  \begin{theorem}[不能告诉你名字的某个著名定理]
+    设 $G = (V, E)$ 是无向连通图, $v, w \in V$ 是不同的两个顶点。
+    则 $v$, $w$ 之间的边不相交的 (edge-disjoint)~\footnote{
+      设 $P_{1}$, $P_{2}$ 是两条$v$、$w$间的路径。
+      如果 $P_{1}$ 与 $P_{2}$ 没有公共边,
+      则 $P_{1}$、$P_{2}$ 是 $v$, $w$ 之间的边不相交的路径。
+    } 路径的最大条数
+    等于最小$vw$-边割集~\footnote{
+      设 $F \subseteq E$ 为集。
+      如果 $G$ 删除 $F$ 后, $v$ 与 $w$ 不再连通,
+      则称 $F$ 是 $vw$-边割集。
+    }的大小。
+  \end{theorem}
+
+  \fig{width = 0.50\textwidth}{figs/edge-disjoint}
+
+  \begin{enumerate}[(1)]
+    \item 考虑图中的 $v$, $w$ 顶点。
+      请给出 $v$、$w$ 间的一个最大边不相交的路径集合。
+    \item 考虑图中的 $v$, $w$ 顶点。
+      请给出一个最小的 $vw$-边割集。
+    \item 请使用最大流-最小割定理证明上述定理~\footnote{恭喜!你刚刚证明了图论中的一个著名定理。}。
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{3} $\star\star$]
+  在整数集 $\mathbb{Z}$ 中, 规定运算 $\oplus$ 如下:
+  \[
+    \forall a, b \in \mathbb{Z}, a \oplus b = a + b - 2.
+  \]
+  请证明: $(\mathbb{Z}, \oplus)$ 构成群。
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{5} $\star\star\star$]
+  设 $G$ 是群。
+  请证明: 如果 $\forall x \in G.\; x^2 = e$,
+  则 $G$ 是交换群。
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[\score{3} $\star\star$]
+  请求出 $3^{83}$ 的最后两位数~\footnote{\url{https://www.wolframalpha.com/input/?i=3\%5E83}}。要求给出计算过程。
+\end{problem}
+
+\begin{proof}
+\end{proof}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有需要订正的题目，可以把这部分删掉
+\begincorrection
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% 如果没有反馈，可以把这部分删掉
+\beginfb
+
+你可以写 (也可以发邮件或者使用``教学立方'')
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item $\cdots$
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
