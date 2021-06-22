@@ -13,6 +13,7 @@
 
 % for colors
 \usepackage{xcolor} % usage: \color{red}{text}
+\usepackage{mdframed}
 % predefined colors
 \newcommand{\red}[1]{\textcolor{red}{#1}} % usage: \red{text}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
@@ -106,6 +107,10 @@
 \newtheorem{theorem}{定理}[subsection]
 \renewcommand{\thetheorem}{\arabic{theorem}}
 \newtheorem{ot}{Open Topics}
+
+% \newenvironment{mdproblem}{
+%   \begin{mdframed}[backgroundcolor=blue!30]\begin{problem}}%
+% {\end{problem}\end{mdframed}}
 
 \theorempreskip{3.0\topsep}
 \theoremheaderfont{\kai\bfseries}

@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \title{12. 图论: 匹配与网络流 (12-matching-flow)}
 \me{魏恒峰}{hfwei@nju.edu.cn}{}{}
-\date{2021年05月28日 发布作业 \\ 2021年06月xx日 发布答案}
+\date{2021年05月28日 发布作业 \\ 2021年06月22日 发布答案}
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -35,11 +35,18 @@
   请证明:
   \begin{enumerate}[(1)]
     \item $|X| = |Y|$;
-    \item $G$ 有一个 $X$-完美匹配。
+    \item $G$ 存在 $X$-完美匹配。
   \end{enumerate}
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item 因为 $G$ 是 $k$-正则二部图, 所以 $k |X| = k |Y|$, 故有 $|X| = |Y|$。
+    \item 对于 $X$ 的任何子集 $S$, 从 $S$ 到 $N(S)$ 的边共有 $k|N|$ 条。
+      这 $k|N|$ 条边均与 $N(S)$ 中的顶点相连, 所以 $k|N| \le k|N(S)|$,
+      即有 $|N(S)| \ge |S|$.
+      根据 Hall 定理, $G$ 存在 $X$-完美匹配。
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -51,6 +58,10 @@
 \end{problem}
 
 \begin{proof}
+  因为 $\delta(G) \ge n + 1$,
+  根据 Dirac 定理, $G$ 中存在 Hamiltonian 回路。
+  该回路是包含 $2n$ 个顶点的圈, 取该圈的不相邻的 $n$ 条边,
+  即为图 $G$ 的一个完美匹配。
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -61,6 +72,9 @@
 \end{problem}
 
 \begin{proof}
+  每个顶点最多覆盖 (cover) $\Delta(G)$ 条边。
+  因此, $G$ 的最小点覆盖中包含 $\ge e(G)/\Delta(G)$ 个顶点。
+  根据 K\"{o}nig-Egerv\'{a}ry 定理, $G$ 的最大匹配包含 $\ge e(G)/\Delta(G)$ 条边。
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -81,6 +95,19 @@
 \end{problem}
 
 \begin{proof}
+  构造二部图 $G = (X, Y, E)$:
+  其中, $X = \set{A_{1}, \dots, A_{m}}$,
+  $Y = \set{a_{1}, \dots, a_{n}}$ (设 $|Y| = n$),
+  并添加边 $\set{A_{i}, a_{j}} \in E$ 当且仅当 $a_{j} \in A_{i}$。
+  因此, $\mathcal{A}$ 有 SDR 当且仅当 $G$ 有 $X$-完美匹配。
+
+  已知
+  \[
+    \forall S \subseteq \set{1, \dots, m}.\;
+      \big\lvert \bigcup_{i \in S} A_{i} \big\rvert \ge |S|,
+  \]
+  即 Hall 条件成立。因此, 根据 Hall 定理, $G$ 有 $X$-完美匹配。
+  故, $\mathcal{A}$ 有 SDR。
 \end{proof}
 %%%%%%%%%%%%%%%
 
