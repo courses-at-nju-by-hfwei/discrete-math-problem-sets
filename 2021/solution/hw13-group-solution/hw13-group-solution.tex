@@ -82,6 +82,25 @@
 \end{problem}
 
 \begin{proof}
+  只需验证:
+  \begin{description}
+    \item[封闭性:] 显然 $a \oplus b \in \mathbb{Z}$。
+    \item[结合性:]
+      \begin{align*}
+        (a \oplus b) \oplus c &= (a + b - 2) \oplus c \\
+          &= a + b - 2 + c - 2 \\
+          &= a + (b + c - 2) - 2 \\
+          &= a \oplus (b \oplus c)
+      \end{align*}
+    \item[单位元:] 单位元为 2。
+      \[
+        a \oplus 2 = a + 2 - 2 = a = 2 \oplus a.
+      \]
+    \item[逆元:] $a$ 的逆元是 $4-a$。
+      \[
+        a \oplus (4 - a) = a + (4 - a) - 2 = 2 = (4 - a) \oplus a.
+      \]
+  \end{description}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -93,6 +112,17 @@
 \end{problem}
 
 \begin{proof}
+  对于任意 $a, b \in G$,
+  \begin{align*}
+    a^{2} = e &\implies a = a^{-1}, \\
+    b^{2} = e &\implies b = b^{-1}, \\
+    (ab)^{2} = e &\implies ab = (ab)^{-1}.
+  \end{align*}
+  因此,
+  \begin{align*}
+    ab = (ab)^{-1} = b^{-1} a^{-1} = ba.
+  \end{align*}
+  因此, $G$ 是交换群。
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -102,6 +132,20 @@
 \end{problem}
 
 \begin{proof}
+  首先 $(3, 100) = 1$, $\phi(100) = \phi(2^2 5^2) = 100 (1 - \frac{1}{2})(1 - \frac{1}{5}) = 40$。
+  根据 Euler's Theorem,
+  \[
+    3^{40} = 1 \mod{100}.
+  \]
+  其次,
+  \[
+    3^{83} = 3^{2 \times 40 + 3} = (3^{40})^{2} \cdot 3^{3}.
+  \]
+  因此,
+  \[
+    3^{83} \mod{100} = 27 \mod{100}.
+  \]
+  即 $3^{83}$ 的最后两位数是 $27$。
 \end{proof}
 %%%%%%%%%%%%%%%
 
