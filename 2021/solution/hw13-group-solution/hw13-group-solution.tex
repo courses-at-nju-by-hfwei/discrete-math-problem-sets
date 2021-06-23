@@ -37,6 +37,27 @@
 \end{problem}
 
 \begin{proof}
+  最大流如下图所示, 值为 $7$;
+  最小割为 $(\set{s, a, b}, \set{c, d, e, t})$, 容量为 $7$。
+  \fig{width = 0.50\textwidth}{figs/network-flow-value-7}
+
+  Ford-Fulkerson Method 一种可能的运行过程如下:
+  \begin{itemize}
+    \item 初始化 $\forall e \in E.\; f(e) = 0$。
+    \item 找到 $f$-增广路径: $s \to a \to d \to t$, 允许的最大增量为 2。
+    \item 将 $f$ 增广为 $f_{1}$,
+      其中 $f_{1}(s \to a) = f_{1}(a \to d) = f_{1}(d \to t) = 2$。
+    \item 找到 $f_{1}$-增广路径: $s \to c \to e \to t$, 允许的最大增量为 4。
+    \item 将 $f_{1}$ 增广为 $f_{2}$,
+      其中 $f_{2}(s \to c) = f_{2}(c \to e) = f_{2}(e \to t) = 4$。
+    \item 找到 $f_{2}$-增广路径: $s \to b \to d \to c \to e \to t$,
+      允许的最大增量为 1。
+    \item 将 $f_{2}$ 增广为 $f_{3}$,
+      其中 $f_{3}(s \to b) = f_{3}(b \to d) = f_{3}(d \to c) = 1$,
+      $f_{3}(c \to e) = f_{3}(e \to t) = 5$。
+    \item 找不到 $f_{3}$-增广路径。因此, $f_{3}$ 为最大流。
+      同时找到最小割 $(\set{s, a, b}, \set{c, d, e, t})$。
+  \end{itemize}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -65,10 +86,78 @@
     \item 考虑图中的 $v$, $w$ 顶点。
       请给出一个最小的 $vw$-边割集。
     \item 请使用最大流-最小割定理证明上述定理~\footnote{恭喜!你刚刚证明了图论中的一个著名定理。}。
+      \marginnote{这就是 Menger's theorem:
+        \teal{\url{https://en.wikipedia.org/wiki/Menger\%27s\_theorem}}。
+        如果直接证明该定理, 还是比较复杂的。
+        使用最大流-最小割定理则容易很多。不过, 还是有些技术细节需要谨慎处理。}
   \end{enumerate}
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item 最大边不相交的路径集合为
+      \[
+        \set{v-p-s-u-w, v-q-s-x-w, v-q-t-y-w, v-r-t-z-w}.
+      \]
+      注意, $v-q$ 有两条重边。
+    \item 最小的 $vw$-边割集为
+      \[
+        \set{ps, qs, qt, rt}.
+      \]
+    \item 首先将无向图 $G$ 转化成有向图 $G'$:
+      将每条无向边 $uv$ 转化成两条有向边 $u \to v$ 与 $v \to u$。
+      然后将每条有向边的容量设置为 1。
+      \mfig{width = 0.80\textwidth}{figs/graph2digraph}
+
+      考虑任意两个顶点 $v, w$。
+      将最大边不相交的$vw$-路径的条数记为 $\lambda'(v, w)$,
+      将最小 $vw$-边割集的大小记为 $\kappa'(v, w)$~\footnote{这是标准记法。}。
+      由于任何一个 $vw$-边割集都要包含边不相交的每条$vw$-路径中的至少一条边, 所以
+      \[
+        \kappa'(v, w) \ge \lambda'(v, w).
+      \]
+      下面我们利用最大流-最小割定理证明 (记最大流为 $f$, 最小割为 $(S, T)$)
+      \[
+        \lambda'(v, w) \ge \max \text{val}(f)
+                       = \min \text{cap}(S, T)
+                       \ge \kappa'(v, w).
+      \]
+
+      经过上述转化, 可将图 $G'$ 视为源点为 $v$, 汇点为 $w$ 的网络。
+      根据 Integrity Theorem~\footnote{我们在课上没有讲过这个定理, 也不会列入考点。
+      不过该定理很直观: 如果网络中每条边的容量都是整数,
+      那么该网络存在每条边的流量都是整数的最大网络流。
+      它的证明也很简单, 因为 Ford-Fulkerson Method 就可以保证这一点。},
+      $G'$ 存在每条边的流量均为整数的最大网络流, 设为 $f$。
+      如果存在某条无向边 $xy$, $f(x \to y) = f(y \to x) = 1$,
+      则可以调整 $f$, 使得 $f(x \to y) = f(y \to x) = 0$。
+      该调整不改变 $\text{val}(f)$。
+      因此, 我们可以假设最大流 $f$ 中每条无向边 $xy$ 最多使用一次
+      (即 $f(x \to y)$ 与 $f(y \to x)$ 不同时为 1)。
+      所以, 该最大流 $f$ 包含了 $\text{val}(f)$ 条
+      (两两)边不相交的 $vw$ 路径。这证明了
+      \[
+        \lambda'(v, w) \ge \max \text{val}(f).
+      \]
+
+      对于任意割 $(S, T)$,
+      每条无向边 $xy$ 有且只有一个方向的有向边算作割的容量。因此,
+      \[
+        \text{cap}(S, T) = |[S, T]|.
+      \]
+      其中 $[S, T]$ 表示从 $S$ 到 $T$ 的有向边的集合。
+      因为 $[S, T]$ 是一个边割集, 所以
+      \[
+        \min \text{cap}(S, T) \ge \kappa'(v, w).
+      \]
+
+      根据最大流-最小割定理,
+      \[
+        \lambda'(v, w) \ge \max \text{val}(f)
+                       = \min \text{cap}(S, T)
+                       \ge \kappa'(v, w).
+      \]
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
