@@ -77,12 +77,45 @@
       \]
     \item
       \[
-        H \triangleleft G \implies \phi(H) \triangleleft G'.
+        H \triangleleft G \implies \phi(H) \triangleleft \phi(G).
       \]
   \end{enumerate}
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item 记 $G'$ 的单位元为 $e'$。
+      $e' \in \phi(H)$, 所以 $\phi(H) \neq \emptyset$。
+      因为 $H \le G$,
+      所以对任意的 $h_{1}, h_{2} \in H$, 有
+      \[
+        h_{1}h_{2}^{-1} \in H.
+      \]
+      因此,
+      \[
+        \phi(h_{1})(\phi(h_{2})^{-1}) = \phi(h_{1})\phi(h_{2}^{-1})
+          = \phi(h_{1}h_{2}^{-1}) \in \phi(H).
+      \]
+      所以, $\phi(H) \le G'$。
+    \item 由 (1) 知,
+      \[
+        H \subseteq G \land \phi(H) \le G'.
+      \]
+      故,
+      \[
+        \phi(H) \le \phi(G).
+      \]
+      对任意 $g \in G$, $h \in H$, 因为 $H \triangleleft G$,
+      \[
+        ghg^{-1} \in H.
+      \]
+      因此,
+      \[
+        \phi(g)\phi(h)(\phi(g))^{-1} = \phi(g)\phi(h)\phi(g^{-1})
+          = \phi(ghg^{-1}) \in \phi(H).
+      \]
+      所以, $\phi(H) \triangleleft \phi(G)$。
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -137,6 +170,13 @@
 \end{problem}
 
 \begin{proof}
+  令 $\langle a \rangle = \set{a, a^{2}, a^{3}, \dots, a^{r} = e}$。
+  易知, $\langle a \rangle \le G$。
+  又有 $|\langle a \rangle| = \text{ord}\; a$。
+  根据 Lagrange's Theorem,
+  \[
+    (\text{ord}\; a) \big\vert |G|.
+  \]
 \end{proof}
 %%%%%%%%%%%%%%%
 
@@ -152,6 +192,23 @@
 \end{problem}
 
 \begin{proof}
+  \begin{enumerate}[(1)]
+    \item
+      \[
+        f(xy) = |xy| = |x| |y| = f(x) f(y),
+      \]
+      因此 $f$ 是从 $\R^{\ast}$ 到 $\R^{+}$ 的同态。
+    \item
+      \[
+        \text{Ker}\; \phi = \set{x \in \R^{\ast} \mid f(x) = 1} = \set{1, -1}.
+      \]
+    \item $\phi(\R^{\ast}) = \R^{+}$。根据群同态基本定理,
+      \[
+        \R^{\ast}/\set{1, -1} \cong \R^{+}.
+      \]
+      对于任意 $x > 0$, 陪集 $\set{x, -x}$ 被 $\phi$ 映射到 $x$。
+      这说明在只考虑绝对值的情况下, $x$ 与 $-x$ 是一样的。
+  \end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%
 
